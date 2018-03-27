@@ -5,6 +5,7 @@ import normalizeVector2 from '../modules/common/normalizeVector2';
 import Boxes from '../modules/sketch/reel/Boxes.js';
 import Floor from '../modules/sketch/reel/Floor.js';
 import Hill from '../modules/sketch/reel/Hill.js';
+import Head from '../modules/sketch/reel/Head.js';
 
 export default function() {
   const canvas = document.getElementById('canvas-webgl');
@@ -33,6 +34,7 @@ export default function() {
   const boxes = new Boxes();
   const floor = new Floor();
   const hill = new Hill();
+  const head = new Head();
 
   //
   // common process
@@ -52,6 +54,7 @@ export default function() {
     boxes.render(time);
     floor.render(renderer, scene, time);
     hill.render(renderer, scene, time);
+    head.render(renderer, scene, time);
     renderer.render(scene, camera);
   }
   const renderLoop = () => {
@@ -124,7 +127,7 @@ export default function() {
 
   const init = () => {
     renderer.setSize(document.body.clientWidth, window.innerHeight);
-    camera.position.set(0, 800, -3000);
+    camera.position.set(0, 400, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     floor.mirrorCamera.position.set(0, -400, -3000);
     floor.mirrorCamera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -138,8 +141,11 @@ export default function() {
     scene.add(boxes.wire.obj);
     scene.add(floor.obj);
     scene.add(hill.obj);
-    console.log('objet', hill.obj)
+    scene.add(head.obj);
+    console.log('hill object is : ', hill.obj)
+    console.log('head object is : ', head.obj)
     scene.add(hill.cubeCamera);
+    scene.add(head.cubeCamera);
     scenePicked.add(boxes.wire.objPicked);
 
     on();
