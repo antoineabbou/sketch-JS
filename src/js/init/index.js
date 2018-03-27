@@ -54,15 +54,15 @@ export default function() {
   }
   const render = () => {
     const time = clock.getDelta();
-    titleObject.render(time);
-    skyOctahedron.render(time);
-    skyOctahedronShell.render(time);
+    // titleObject.render(time);
+    // skyOctahedron.render(time);
+    // skyOctahedronShell.render(time);
     ground.render(time);
     for (var i = 0; i < debris.length; i++) {
       debris[i].render(time);
     }
     renderer.render(sceneBack, cameraBack, renderBack);
-    postEffect.render(time);
+    // postEffect.render(time);
     renderer.render(scene, camera);
   }
   const renderLoop = () => {

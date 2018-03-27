@@ -54,7 +54,7 @@ export default function() {
     const time = clock.getDelta();
     renderer.setClearColor(0xf1f1f1, 1.0);
     boxes.render(time);
-    // floor.render(renderer, scene, time);
+    floor.render(renderer, scene, time);
     hill.render(renderer, scene, time);
     head.render(renderer, scene, time);
     renderer.render(scene, camera);
@@ -158,11 +158,9 @@ export default function() {
     scene.add(boxes.core.obj);
     scene.add(boxes.wire.obj);
     scene.add(floor.obj);
-    scene.add(hill.obj);
+    // scene.add(hill.obj);
     scene.add(head.obj);
-    console.log('hill object is : ', hill.obj)
-    console.log('head object is : ', head.obj)
-    scene.add(hill.cubeCamera);
+    // scene.add(hill.cubeCamera);
     scene.add(head.cubeCamera);
     scenePicked.add(boxes.wire.objPicked);
 

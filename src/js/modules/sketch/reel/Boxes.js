@@ -34,7 +34,6 @@ export default class Boxes {
   picked(id) {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
-    console.log(id)
     // let articleName = document.querySelector('.p-sketch-outline__article')
     if (id < this.instances && id > -1) {
       document.body.classList.add('is-picked');
@@ -42,12 +41,9 @@ export default class Boxes {
       
       Articles.forEach(article => {
         if(id === article.id) {
-          console.log('article id: ', article.id)
-          console.log('id : ', id)
           this.article.innerHTML = 'Voici l\'article "' + article.id + '", titre : ' + article.title + ' ';
         }
       });
-      // console.log(id)
     } else {
       document.body.classList.remove('is-picked');
       this.article.classList.remove('article-show')
