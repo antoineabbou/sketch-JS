@@ -124,7 +124,7 @@ export default function() {
 
   const init = () => {
     renderer.setSize(document.body.clientWidth, window.innerHeight);
-    camera.position.set(0, 400, -3000);
+    camera.position.set(0, 800, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     floor.mirrorCamera.position.set(0, -400, -3000);
     floor.mirrorCamera.lookAt(new THREE.Vector3(0, 0, 0));
