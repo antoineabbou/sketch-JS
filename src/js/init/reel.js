@@ -159,10 +159,14 @@ export default function() {
     scene.add(boxes.wire.obj);
     scene.add(floor.obj);
     // scene.add(hill.obj);
-    scene.add(head.obj);
+    
     // scene.add(hill.cubeCamera);
     scene.add(head.cubeCamera);
     scenePicked.add(boxes.wire.objPicked);
+
+    head.init().then(() => {
+      scene.add(head.obj);
+    })
 
     on();
     resizeWindow();

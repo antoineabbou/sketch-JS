@@ -12,10 +12,21 @@ export default class Head {
         value: 0
       }
     }
-    this.manager = new THREE.LoadingManager()
-    this.obj = this.createObj();
+    
+    // this.obj = this.createObj();
     
     // this.obj.rotation.set(0, 0.3 * Math.PI, 0);
+  }
+
+  init() {
+    return new Promise((resolve, reject) => {
+      this.manager = new THREE.LoadingManager()
+      this.loadObject().then((object) => {
+        this.obj = object
+        this.obj.scale.set(100, 100 , 100)
+        resolve()
+      })
+    })
   }
   
   createObj() {
@@ -46,19 +57,27 @@ export default class Head {
     
     // return p
     
-    var geometry = new THREE.BoxGeometry( 500, 500, 500 );
-    var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-    var cube = new THREE.Mesh( geometry, material );
-    return cube
+    // var geometry = new THREE.BoxGeometry( 500, 500, 500 );
+    // var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+    // var cube = new THREE.Mesh( geometry, material );
+    // return cube  
+  }
 
-    // var loader = new THREE.OBJLoader(this.manager)
-    // loader.load( '/sketch-threejs/img/sketch/reel/test.obj', ( object ) => {
-    //   object.scale.set(100, 100 , 100)
-    //   return object
-    // })
+  loadObject() {
+    return new Promise ((resolve, reject) => {
+      var loader = new THREE.OBJLoader(this.manager)
+      loader.load( '/sketch-threejs/img/sketch/reel/test.obj', ( object ) => {
+        // object.scale.set(100, 100 , 100)
+        resolve(object)
+        // return object
+      })
+    })
   }
   
   render(renderer, scene, time) {
+    if (!this.obj) {
+      return
+    }
     this.uniforms.time.value += time;
     this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);
