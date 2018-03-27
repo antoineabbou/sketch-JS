@@ -7,6 +7,8 @@ import Floor from '../modules/sketch/reel/Floor.js';
 import Hill from '../modules/sketch/reel/Hill.js';
 import Head from '../modules/sketch/reel/Head.js';
 
+// var sound = require('../../sounds/audio.mp3')
+
 export default function() {
   const canvas = document.getElementById('canvas-webgl');
   const renderer = new THREE.WebGLRenderer({
@@ -126,6 +128,8 @@ export default function() {
   }
 
   const init = () => {
+    // let audio = new Audio(sound);
+    // audio.play();
     renderer.setSize(document.body.clientWidth, window.innerHeight);
     camera.position.set(0, 400, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));

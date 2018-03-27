@@ -7,6 +7,9 @@ import force3 from '../../common/force3';
 import Core from './Core';
 import Wire from './Wire';
 
+var Articles = require('../../../../articles.json')
+
+
 export default class Boxes {
   constructor() {
     this.velocity = [0, 0, 0];
@@ -31,11 +34,19 @@ export default class Boxes {
   picked(id) {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
+    console.log(id)
     // let articleName = document.querySelector('.p-sketch-outline__article')
     if (id < this.instances && id > -1) {
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');
-      this.article.innerHTML = 'Voici l\'article "' + id + '", il parle de plein de choses :-)';
+      
+      Articles.forEach(article => {
+        if(id === article.id) {
+          console.log('article id: ', article.id)
+          console.log('id : ', id)
+          this.article.innerHTML = 'Voici l\'article "' + article.id + '", titre : ' + article.title + ' ';
+        }
+      });
       // console.log(id)
     } else {
       document.body.classList.remove('is-picked');
