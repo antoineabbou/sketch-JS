@@ -127,10 +127,23 @@ export default function() {
     });
   }
 
-  const init = () => {
-    let audio = new Audio('../../sounds/audio.mp3');
+  const audioManager = () => {
+    let audio = new Audio()    
+    let i = 0
+    let playlist = new Array('../../sounds/audio.mp3', '../../sounds/audio-2.mp3', '../../sounds/audio-3.mp3', '../../sounds/audio-4.mp3')
+
+    audio.addEventListener('ended', () => {
+      i = ++i < playlist.length ? i : 0
+      audio.src = playlist[i]
+      audio.play()
+    }, true)
     audio.volume = 0.4
+    audio.src = playlist[0]
     audio.play()
+  }
+
+  const init = () => {
+    audioManager()
     renderer.setSize(document.body.clientWidth, window.innerHeight);
     camera.position.set(0, 400, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
