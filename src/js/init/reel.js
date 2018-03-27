@@ -52,7 +52,7 @@ export default function() {
     const time = clock.getDelta();
     renderer.setClearColor(0xf1f1f1, 1.0);
     boxes.render(time);
-    floor.render(renderer, scene, time);
+    // floor.render(renderer, scene, time);
     hill.render(renderer, scene, time);
     head.render(renderer, scene, time);
     renderer.render(scene, camera);

@@ -15,6 +15,7 @@ export default class Boxes {
     this.instances = 36;
     this.core = new Core(this.instances);
     this.wire = new Wire(this.instances);
+    this.article = document.querySelector('.p-sketch-outline__article')
   }
   updateRotation() {
     force3.applyHook(this.velocity, this.acceleration, this.anchor, 0, 0.02);
@@ -30,11 +31,15 @@ export default class Boxes {
   picked(id) {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
+    // let articleName = document.querySelector('.p-sketch-outline__article')
     if (id < this.instances && id > -1) {
       document.body.classList.add('is-picked');
+      this.article.classList.add('article-show');
+      this.article.innerHTML = 'Voici l\'article "' + id + '", il parle de plein de choses :-)';
       // console.log(id)
     } else {
       document.body.classList.remove('is-picked');
+      this.article.classList.remove('article-show')
     }
   }
   render(time) {
