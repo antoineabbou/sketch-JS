@@ -128,8 +128,9 @@ export default function() {
   }
 
   const init = () => {
-    // let audio = new Audio(sound);
-    // audio.play();
+    let audio = new Audio('../../sounds/audio.mp3');
+    audio.volume = 0.4
+    audio.play()
     renderer.setSize(document.body.clientWidth, window.innerHeight);
     camera.position.set(0, 400, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
