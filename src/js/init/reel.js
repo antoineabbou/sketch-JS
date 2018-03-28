@@ -165,7 +165,7 @@ export default function() {
     scenePicked.add(boxes.wire.objPicked);
 
     head.init().then(() => {
-      scene.add(head.obj);
+      scene.add(head.p);
     })
 
     on();
