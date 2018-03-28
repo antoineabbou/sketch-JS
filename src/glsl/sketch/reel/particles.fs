@@ -95,11 +95,8 @@ void main() {
 
   float pct = abs(sin(time));
 
-  color = mix(colorA, colorB, pct); 
-
-  gl_FragColor = vec4(color,0.1);
-
-  // float color = snoise(vec3(time/frequency/4.));
-	// gl_FragColor = vec4(color/.5, color, color, 1.0);
+  color = mix(colorA, colorB, pct);
+  
+  gl_FragColor = vec4(color,1.0);
   
 }

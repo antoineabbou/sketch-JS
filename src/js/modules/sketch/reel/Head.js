@@ -1,8 +1,6 @@
 const THREE = require('three/build/three.js');
 const OBJLoader = require('./OBJLoader');
 const glslify = require('glslify');
-const particleVert = require('../../../../glsl/sketch/reel/particles.vs')
-const particleFrag = require('../../../../glsl/sketch/reel/particles.fs')
 
 export default class Head {
   constructor() {
@@ -23,23 +21,24 @@ export default class Head {
   init() {
     return new Promise((resolve, reject) => {
       var p_geom = new THREE.Geometry()
-      var p_material = new THREE.PointsMaterial({
-        color: 0x2a2a2a,
-        size: 0.0002
-      })
       this.manager = new THREE.LoadingManager()
       this.loadObject().then((object) => {
         this.obj = object
         this.obj.traverse( (child) => {
           if (child instanceof THREE.Mesh) {
-            var scale = 400
+            var scale = 15
             child.geometry.vertices.forEach(position => {
               p_geom.vertices.push(new THREE.Vector3(position.x * scale, position.y * scale, position.z * scale))
             })
           }
           this.p = new THREE.Points(
             p_geom,
-            p_material
+            new THREE.ShaderMaterial( {
+              uniforms: this.uniforms, 
+              vertexShader: glslify('../../../../glsl/sketch/reel/particles.vs'),
+              fragmentShader: glslify('../../../../glsl/sketch/reel/particles.fs'),
+              // flatShading: true
+            })
           )
           // this.p.scale.set(300, 300 , 300)
           this.p.position.set(0, 300, 0);
@@ -87,7 +86,7 @@ export default class Head {
   loadObject() {
     return new Promise ((resolve, reject) => {
       var loader = new THREE.OBJLoader(this.manager)
-      loader.load( '/sketch-threejs/img/sketch/reel/test.obj', ( object ) => {
+      loader.load( '/sketch-threejs/img/sketch/reel/test3.obj', ( object ) => {
         // object.scale.set(100, 100 , 100)
         resolve(object)
         // return object
@@ -103,6 +102,6 @@ export default class Head {
     this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);
     this.obj.visible = true;
-    this.p.rotateY(0.01)
+    this.p.rotateY(0.008)
   }
 }

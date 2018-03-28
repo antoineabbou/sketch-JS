@@ -121,9 +121,9 @@ vec3 curlNoise( vec3 p ){
 }
 
 void main() {
-    gl_PointSize = 1.7;
-	  vec3 newPosition = position * (60.+frequency/2. + curlNoise(position+time/10.)*frequency/2.);
-    //vec3 newPosition = position * (60. + curlNoise(position+time/10.)* 15.);
+    gl_PointSize = 1.1;
+    //vec3 newPosition = position * (60.+frequency/2. + curlNoise(position+time/100.)*frequency/2.);
+    vec3 newPosition = position + (curlNoise(position + time)*5.);
 
   	gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
 }
