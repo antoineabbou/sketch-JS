@@ -12,10 +12,6 @@ export default class Head {
         value: 0
       }
     }
-    
-    // this.obj = this.createObj();
-    
-    // this.obj.rotation.set(0, 0.3 * Math.PI, 0);
   }
 
   init() {
@@ -36,60 +32,21 @@ export default class Head {
             new THREE.ShaderMaterial( {
               uniforms: this.uniforms, 
               vertexShader: glslify('../../../../glsl/sketch/reel/particles.vs'),
-              fragmentShader: glslify('../../../../glsl/sketch/reel/particles.fs'),
-              // flatShading: true
+              fragmentShader: glslify('../../../../glsl/sketch/reel/particles.fs')
             })
           )
-          // this.p.scale.set(300, 300 , 300)
           this.p.position.set(0, 300, 0);
         })
-        console.log(this.p)
         resolve()
       })
     })
-  }
-  
-  createObj() {
-    // var p_geom = new THREE.Geometry()
-    // var p_material = new THREE.PointsMaterial({
-    //   color: 0x00ffff,
-    //   size: 10
-    // })
-
-    // model
-    // var loader = new THREE.OBJLoader(this.manager)
-    // loader.load( '/sketch-threejs/img/sketch/reel/test.obj', (object) => {
-    //   object.traverse( (child) => {
-    //     if (child instanceof THREE.Mesh) {
-    //       var scale = 1000
-    //       child.geometry.vertices.forEach(position => {
-    //         p_geom.vertices.push(new THREE.Vector3(position.x * scale, position.y * scale, position.z * scale))
-    //       })
-    //     }
-    //   })
-
-    // })
-  
-    // var p = new THREE.Points(
-    //   p_geom,
-    //   p_material
-    // )
-    
-    // return p
-    
-    // var geometry = new THREE.BoxGeometry( 500, 500, 500 );
-    // var material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
-    // var cube = new THREE.Mesh( geometry, material );
-    // return cube  
   }
 
   loadObject() {
     return new Promise ((resolve, reject) => {
       var loader = new THREE.OBJLoader(this.manager)
       loader.load( '/sketch-threejs/img/sketch/reel/test3.obj', ( object ) => {
-        // object.scale.set(100, 100 , 100)
         resolve(object)
-        // return object
       })
     })
   }

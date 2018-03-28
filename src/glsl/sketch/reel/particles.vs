@@ -121,7 +121,7 @@ vec3 curlNoise( vec3 p ){
 }
 
 void main() {
-    gl_PointSize = 1.1;
+    gl_PointSize = 0.8;
     //vec3 newPosition = position * (60.+frequency/2. + curlNoise(position+time/100.)*frequency/2.);
     vec3 newPosition = position + (curlNoise(position + time)*5.);
 

@@ -145,9 +145,9 @@ export default function() {
   const init = () => {
     audioManager()
     renderer.setSize(document.body.clientWidth, window.innerHeight);
-    camera.position.set(0, 400, -3000);
+    camera.position.set(0, 600, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
-    floor.mirrorCamera.position.set(0, -400, -3000);
+    floor.mirrorCamera.position.set(0, -600, -3000);
     floor.mirrorCamera.lookAt(new THREE.Vector3(0, 0, 0));
 
     boxes.core.obj.position.set(0, 80, 0);

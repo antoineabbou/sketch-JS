@@ -1,8 +1,8 @@
 uniform float time;
 uniform float frequency;
 
-vec3 colorA = vec3(0.31,0.30,0.67);
-vec3 colorB = vec3(0.51,0.44,0.64);
+vec3 colorA = vec3(0., 0., 0.165);
+vec3 colorB = vec3(0., 0., 0.165);
 vec3 mod289(vec3 x) {
   return x - floor(x * (1.0 / 289.0)) * 289.0;
 }
