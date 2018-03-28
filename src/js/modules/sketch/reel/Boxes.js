@@ -34,7 +34,6 @@ export default class Boxes {
   picked(id) {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
-    // let articleName = document.querySelector('.p-sketch-outline__article')
     if (id < this.instances && id > -1) {
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');

@@ -22,7 +22,7 @@ export default class Head {
         this.obj = object
         this.obj.traverse( (child) => {
           if (child instanceof THREE.Mesh) {
-            var scale = 15
+            var scale = 100
             child.geometry.vertices.forEach(position => {
               p_geom.vertices.push(new THREE.Vector3(position.x * scale, position.y * scale, position.z * scale))
             })
@@ -45,7 +45,7 @@ export default class Head {
   loadObject() {
     return new Promise ((resolve, reject) => {
       var loader = new THREE.OBJLoader(this.manager)
-      loader.load( '/sketch-threejs/img/sketch/reel/test3.obj', ( object ) => {
+      loader.load( '/sketch-threejs/img/sketch/reel/car.obj', ( object ) => {
         resolve(object)
       })
     })
