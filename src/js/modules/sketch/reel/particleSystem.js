@@ -66,7 +66,10 @@ class particleSystem {
     }
 
     changeModel() {
+        // console.log('am doing somethign here', this.currentBufferId)
         this.oldBufferId = this.currentBufferId
+        // console.log(this.objBuffers)
+
         this.mesh.geometry.attributes.oldBuffer.array = this.objBuffers[this.oldBufferId]
         
         if(this.oldBufferId == this.objBuffers.length-1) {
@@ -74,9 +77,14 @@ class particleSystem {
         }else {
             this.currentBufferId = this.oldBufferId + 1
         }
+    
+        // console.log('current id', this.currentBufferId)
         
-        console.log(this.oldBufferId)
+        console.log('//////////')
+        console.log('test', this.mesh.geometry.attributes.currentBuffer.array)
+        console.log('objbuffers', this.objBuffers[this.currentBufferId])
         this.mesh.geometry.attributes.currentBuffer.array = this.objBuffers[this.currentBufferId]
+        
     }
 }
 

@@ -54,7 +54,6 @@ export default function() {
     const time = clock.getDelta();
     renderer.setClearColor(0xf1f1f1, 1.0);
     boxes.render(time);
-    console.log(time)
     this.newTime += time
     if(scene.children[4]) {
       scene.children[4].material.uniforms.beginAnimTime.value = this.newTime
@@ -176,6 +175,7 @@ export default function() {
       scene.add(mesh)
       mesh.scale.set(300, 300, 300)
       mesh.position.y = 300
+      console.log('init')
     })
 
     on();

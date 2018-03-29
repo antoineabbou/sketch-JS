@@ -30,7 +30,7 @@ export default class Head {
     return new Promise(resolve => {
       this.transform().then(objBuffers => {
         this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
-        this.render()
+        // this.render()
         resolve(this.ParticleSystem.mesh)
       })
     })
@@ -75,11 +75,12 @@ export default class Head {
     
     return new Promise((resolve, reject) => {
      
-      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/mask.obj']).then(objects => {
+      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/soccerBall.obj']).then(objects => {
         let count = 0
         let objVects = []
         for (let i = 0; i < objects.length; i++) {
             this.objects = objects
+            console.log(this.objects)
             let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 10000.)
             objVects.push(objVect)
             if(objVect) {
@@ -108,18 +109,26 @@ export default class Head {
   
   render(renderer, scene, time) {
     
-    if (!this.obj) {
-      return
+    // if (!this.obj) {
+    //   return
+    // }
+    console.log(this.ParticleSystem)
+
+    if(this.ParticleSystem) {
+      this.ParticleSystem.geometry.attributes.oldBuffer.needsUpdate = true
+      this.ParticleSystem.geometry.attributes.currentBuffer.needsUpdate = true 
     }
+    
     this.animTime++
-    console.log(this.animTime)
-    if(this.animTime >= 500) {
+    if(this.animTime >= 100) {
+      this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
       this.changeObj()
+      this.animTime = 0
     }
     this.uniforms.time.value += time;
-    this.obj.visible = false;
+    // this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);
-    this.obj.visible = true;
-    this.p.rotateY(0.008)
+    // this.obj.visible = true;
+    // this.p.rotateY(0.008)
   }
 }
