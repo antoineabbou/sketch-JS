@@ -69,7 +69,6 @@ class particleSystem {
         // console.log('am doing somethign here', this.currentBufferId)
         this.oldBufferId = this.currentBufferId
         // console.log(this.objBuffers)
-
         this.mesh.geometry.attributes.oldBuffer.array = this.objBuffers[this.oldBufferId]
         
         if(this.oldBufferId == this.objBuffers.length-1) {

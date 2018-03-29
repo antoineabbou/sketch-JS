@@ -31,6 +31,7 @@ export default class Head {
       this.transform().then(objBuffers => {
         this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
         // this.render()
+     
         resolve(this.ParticleSystem.mesh)
       })
     })
@@ -48,6 +49,7 @@ export default class Head {
               objBuffers.push(objBuffer)
               console.log('ayo')
               count ++
+              console.log('ok')
               if(count == objVects.length) resolve(objBuffers)           
           }     
       })
@@ -112,18 +114,21 @@ export default class Head {
     // if (!this.obj) {
     //   return
     // }
-    console.log(this.ParticleSystem)
-
+    //console.log(this.ParticleSystem)
+    this.animTime++
     if(this.ParticleSystem) {
-      this.ParticleSystem.geometry.attributes.oldBuffer.needsUpdate = true
-      this.ParticleSystem.geometry.attributes.currentBuffer.needsUpdate = true 
+    
+      this.ParticleSystem.mesh.geometry.attributes.oldBuffer.needsUpdate = true
+      this.ParticleSystem.mesh.geometry.attributes.currentBuffer.needsUpdate = true 
+      this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = this.animTime
+
     }
     
-    this.animTime++
+  
     if(this.animTime >= 100) {
+      console.log(this.ParticleSystem)
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
       this.changeObj()
-      this.animTime = 0
     }
     this.uniforms.time.value += time;
     // this.obj.visible = false;
