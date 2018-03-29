@@ -54,6 +54,12 @@ export default function() {
     const time = clock.getDelta();
     renderer.setClearColor(0xf1f1f1, 1.0);
     boxes.render(time);
+    console.log(time)
+    this.newTime += time
+    if(scene.children[4]) {
+      scene.children[4].material.uniforms.beginAnimTime.value = this.newTime
+
+    }
     floor.render(renderer, scene, time);
     hill.render(renderer, scene, time);
     head.render(renderer, scene, time);
@@ -61,6 +67,7 @@ export default function() {
   }
   const renderLoop = () => {
     render();
+    
     requestAnimationFrame(renderLoop);
   }
   const touchStart = (isTouched) => {
@@ -149,7 +156,7 @@ export default function() {
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     floor.mirrorCamera.position.set(0, -600, -3000);
     floor.mirrorCamera.lookAt(new THREE.Vector3(0, 0, 0));
-
+    this.newTime = 0
     boxes.core.obj.position.set(0, 80, 0);
     boxes.wire.obj.position.set(0, 80, 0);
     boxes.wire.objPicked.position.set(0, 80, 0);
@@ -164,8 +171,11 @@ export default function() {
     scene.add(head.cubeCamera);
     scenePicked.add(boxes.wire.objPicked);
 
-    head.init().then(() => {
-      scene.add(head.p);
+    head.init().then(mesh=> {
+      console.log(mesh)
+      scene.add(mesh)
+      mesh.scale.set(300, 300, 300)
+      mesh.position.y = 300
     })
 
     on();

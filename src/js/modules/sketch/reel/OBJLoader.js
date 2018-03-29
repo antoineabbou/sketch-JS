@@ -328,3 +328,5 @@ THREE.OBJLoader.prototype = {
 	}
 
 };
+
+export default THREE.OBJLoader

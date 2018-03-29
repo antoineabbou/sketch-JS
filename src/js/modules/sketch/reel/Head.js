@@ -1,6 +1,11 @@
+import { Geometry } from 'three';
+
+import ObjectManager from './objectManager'
+import particleSystem from './particleSystem'
 const THREE = require('three/build/three.js');
 const OBJLoader = require('./OBJLoader');
 const glslify = require('glslify');
+const GeometryUtils = require('./GeometryUtils')
 
 export default class Head {
   constructor() {
@@ -12,33 +17,78 @@ export default class Head {
         value: 0
       }
     }
+    this.animTime = 0
+  }
+
+  initParticleSystem(objBuffers) {
+    this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
+    console.log('ok')
+    return this.ParticleSystem.mesh 
   }
 
   init() {
-    return new Promise((resolve, reject) => {
-      var p_geom = new THREE.Geometry()
-      this.manager = new THREE.LoadingManager()
-      this.loadObject().then((object) => {
-        this.obj = object
-        this.obj.traverse( (child) => {
-          if (child instanceof THREE.Mesh) {
-            var scale = 100
-            child.geometry.vertices.forEach(position => {
-              p_geom.vertices.push(new THREE.Vector3(position.x * scale, position.y * scale, position.z * scale))
-            })
-          }
-          this.p = new THREE.Points(
-            p_geom,
-            new THREE.ShaderMaterial( {
-              uniforms: this.uniforms, 
-              vertexShader: glslify('../../../../glsl/sketch/reel/particles.vs'),
-              fragmentShader: glslify('../../../../glsl/sketch/reel/particles.fs')
-            })
-          )
-          this.p.position.set(0, 300, 0);
-        })
-        resolve()
+    return new Promise(resolve => {
+      this.transform().then(objBuffers => {
+        this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
+        this.render()
+        resolve(this.ParticleSystem.mesh)
       })
+    })
+   
+  }
+
+  transform() {
+    return new Promise(resolve => {
+      this.load().then(objVects => {
+          let count = 0
+          let objBuffers = []
+          for (let i = 0; i < objVects.length; i++) {
+              let objBuffer = this.transformVectorToBuffer(objVects[i])
+             
+              objBuffers.push(objBuffer)
+              console.log('ayo')
+              count ++
+              if(count == objVects.length) resolve(objBuffers)           
+          }     
+      })
+  })        
+  }
+
+  transformVectorToBuffer(positions) {
+    let objBuffer = new Float32Array(positions.length*3)
+
+    let objBufferIterator = 0
+    for (let i = 0; i < objBuffer.length; i++) {
+       
+        objBuffer[objBufferIterator++] = positions[Math.floor((i)/3)].x        
+       
+        objBuffer[objBufferIterator++] = positions[Math.floor((i)/3)].y  
+       
+        objBuffer[objBufferIterator++] = positions[Math.floor((i)/3)].z  
+    }
+
+    return objBuffer
+}
+
+  load() {
+    this.ObjectManager = new ObjectManager()
+    
+    return new Promise((resolve, reject) => {
+     
+      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/mask.obj']).then(objects => {
+        let count = 0
+        let objVects = []
+        for (let i = 0; i < objects.length; i++) {
+            this.objects = objects
+            let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 10000.)
+            objVects.push(objVect)
+            if(objVect) {
+                count ++
+                if(count == objects.length) resolve(objVects)
+            }
+                             
+        }               
+    })
     })
   }
 
@@ -50,10 +100,21 @@ export default class Head {
       })
     })
   }
+
+  changeObj() {
+    this.animTime = 0
+    this.ParticleSystem.changeModel()
+  }
   
   render(renderer, scene, time) {
+    
     if (!this.obj) {
       return
+    }
+    this.animTime++
+    console.log(this.animTime)
+    if(this.animTime >= 500) {
+      this.changeObj()
     }
     this.uniforms.time.value += time;
     this.obj.visible = false;

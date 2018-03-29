@@ -1,5 +1,4 @@
-import * as THREE from 'three'
-
+window.THREE = require('three')
 
 var GeometryUtils = {
 
