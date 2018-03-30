@@ -7,6 +7,8 @@ import force3 from '../../common/force3';
 import Core from './Core';
 import Wire from './Wire';
 
+import Head from './Head';
+
 var Articles = require('../../../../articles.json')
 
 
@@ -35,6 +37,10 @@ export default class Boxes {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
     if (id < this.instances && id > -1) {
+      if(!Head.launchAnimation) {
+        Head.launchAnimation = true
+        console.log(Head.launchAnimation)
+      }
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');
       
@@ -44,6 +50,10 @@ export default class Boxes {
         }
       });
     } else {
+      if(Head.launchAnimation) {
+        Head.launchAnimation = false
+        console.log(Head.launchAnimation)
+      }
       document.body.classList.remove('is-picked');
       this.article.classList.remove('article-show')
     }

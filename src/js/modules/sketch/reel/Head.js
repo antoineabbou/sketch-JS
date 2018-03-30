@@ -18,6 +18,7 @@ export default class Head {
       }
     }
     this.animTime = 0
+    this.launchAnimation = false
   }
 
   initParticleSystem(objBuffers) {
