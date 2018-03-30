@@ -128,8 +128,8 @@ void main() {
     gl_PointSize = 0.8;
     //vec3 newPosition = position * (60.+frequency/2. + curlNoise(position+time/100.)*frequency/2.);
     //vec3 newPosition = position + (curlNoise(position + time)*5.);
-    vec3 newPosition = mix(oldBuffer,currentBuffer , min(1.,beginAnimTime/100.));
-    // newPosition = newPosition + curlNoise(newPosition + beginAnimTime)/80.;
+    vec3 newPosition = mix(oldBuffer,currentBuffer , min(1.,beginAnimTime/70.));
+    newPosition = newPosition + (curlNoise(newPosition + beginAnimTime/50.)/100.);
 
   	gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
 }

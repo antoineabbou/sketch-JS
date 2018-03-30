@@ -21,7 +21,7 @@ export default class Head {
   }
 
   initParticleSystem(objBuffers) {
-    this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
+    this.ParticleSystem = new particleSystem({count: 50000, objBuffers: objBuffers})
     console.log('ok')
     return this.ParticleSystem.mesh 
   }
@@ -29,7 +29,7 @@ export default class Head {
   init() {
     return new Promise(resolve => {
       this.transform().then(objBuffers => {
-        this.ParticleSystem = new particleSystem({count: 10000, objBuffers: objBuffers})
+        this.ParticleSystem = new particleSystem({count: 50000, objBuffers: objBuffers})
         // this.render()
      
         resolve(this.ParticleSystem.mesh)
@@ -83,7 +83,7 @@ export default class Head {
         for (let i = 0; i < objects.length; i++) {
             this.objects = objects
             console.log(this.objects)
-            let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 10000.)
+            let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 50000.)
             objVects.push(objVect)
             if(objVect) {
                 count ++
@@ -121,11 +121,12 @@ export default class Head {
       this.ParticleSystem.mesh.geometry.attributes.oldBuffer.needsUpdate = true
       this.ParticleSystem.mesh.geometry.attributes.currentBuffer.needsUpdate = true 
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = this.animTime
+      this.ParticleSystem.mesh.rotateY(0.008)
 
     }
     
   
-    if(this.animTime >= 100) {
+    if(this.animTime >= 250) {
       console.log(this.ParticleSystem)
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
       this.changeObj()
@@ -134,6 +135,6 @@ export default class Head {
     // this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);
     // this.obj.visible = true;
-    // this.p.rotateY(0.008)
+   
   }
 }
