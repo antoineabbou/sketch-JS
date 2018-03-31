@@ -6,7 +6,6 @@ import Boxes from '../modules/sketch/reel/Boxes.js';
 import Floor from '../modules/sketch/reel/Floor.js';
 import Hill from '../modules/sketch/reel/Hill.js';
 import Head from '../modules/sketch/reel/Head.js';
-
 // var sound = require('../../sounds/audio.mp3')
 
 export default function() {
@@ -167,7 +166,6 @@ export default function() {
     scenePicked.add(boxes.wire.objPicked);
 
     head.init().then(mesh=> {
-      console.log(mesh)
       scene.add(mesh)
       mesh.scale.set(300, 300, 300)
       mesh.position.y = 300

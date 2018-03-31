@@ -9,6 +9,9 @@ import Wire from './Wire';
 
 import Head from './Head';
 
+import Emitter from '../../../init/events.js';
+
+
 var Articles = require('../../../../articles.json')
 
 
@@ -17,10 +20,12 @@ export default class Boxes {
     this.velocity = [0, 0, 0];
     this.acceleration = [0, 0, 0];
     this.anchor = [0, 0, 0];
-    this.instances = 34;
+    this.instances = 32;
     this.core = new Core(this.instances);
     this.wire = new Wire(this.instances);
     this.article = document.querySelector('.p-sketch-outline__article')
+    console.log('hello world', Emitter)
+
   }
   updateRotation() {
     force3.applyHook(this.velocity, this.acceleration, this.anchor, 0, 0.02);
@@ -39,6 +44,7 @@ export default class Boxes {
     if (id < this.instances && id > -1) {
       if(!Head.launchAnimation) {
         Head.launchAnimation = true
+        Emitter.emit('GLOBAL:TOUCH', id)
         console.log(Head.launchAnimation)
       }
       document.body.classList.add('is-picked');

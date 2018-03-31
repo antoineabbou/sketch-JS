@@ -2,6 +2,8 @@
 
 import ObjectManager from './objectManager'
 import particleSystem from './particleSystem'
+import Emitter from '../../../init/events.js'
+
 const THREE = require('three/build/three.js');
 const OBJLoader = require('./OBJLoader');
 const glslify = require('glslify');
@@ -19,6 +21,12 @@ export default class Head {
     }
     this.animTime = 0
     this.launchAnimation = false
+    this.id = null
+    Emitter.on('GLOBAL:TOUCH', (id) => {
+      console.log(id)
+      this.changeShape = true
+      this.id = id
+    })
   }
 
   initParticleSystem(objBuffers) {
@@ -105,9 +113,10 @@ export default class Head {
     })
   }
 
-  changeObj() {
+  changeObj(id) {
     this.animTime = 0
-    this.ParticleSystem.changeModel()
+    this.changeShape = false
+    this.ParticleSystem.changeModel(id)
   }
   
   render(renderer, scene, time) {
@@ -125,13 +134,19 @@ export default class Head {
       this.ParticleSystem.mesh.rotateY(0.01)
 
     }
+
     
-  
-    if(this.animTime >= 150) {
-      console.log(this.ParticleSystem)
+    if(this.changeShape) {
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
-      this.changeObj()
-    }
+      console.log('this.id = ', this.objects)
+      this.changeObj(this.id)
+    }  
+  
+    // if(this.animTime >= 150) {
+    //   console.log(this.ParticleSystem)
+    //   this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
+    //   this.changeObj()
+    // }
     this.uniforms.time.value += time;
     // this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);

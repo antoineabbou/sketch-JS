@@ -65,16 +65,17 @@ class particleSystem {
         return (num === this.oldBufferId) ? this.generateRandom(min, max) : num;        
     }
 
-    changeModel() {
+    changeModel(id) {
         // console.log('am doing somethign here', this.currentBufferId)
+        console.log('change model', this.objBuffers)
         this.oldBufferId = this.currentBufferId
+        
         // console.log(this.objBuffers)
         this.mesh.geometry.attributes.oldBuffer.array = this.objBuffers[this.oldBufferId]
-        
         if(this.oldBufferId == this.objBuffers.length-1) {
             this.currentBufferId = 0
         }else {
-            this.currentBufferId = this.oldBufferId + 1
+            this.currentBufferId = id
         }
     
         // console.log('current id', this.currentBufferId)
