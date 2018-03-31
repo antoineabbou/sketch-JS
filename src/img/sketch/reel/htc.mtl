@@ -1,0 +1,124 @@
+# Blender MTL File: 'None'
+# Material Count: 10
+
+newmtl base
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/base.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/base.png
+
+newmtl black
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+
+newmtl dots
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+
+newmtl lambert2SG
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6dM1J6f6pm9_fA_mIl2jzUR_obj/Tex_Cat.png
+
+newmtl lens
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/lens.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/lens.png
+
+newmtl logo
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/logo.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/logo.png
+
+newmtl noise
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/noise.png
+map_Bump /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/noise.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/noise.png
+
+newmtl pad
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+map_Bump /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/Map__21_Normal_Bump.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+
+newmtl screen
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/black.png
+
+newmtl strap
+Ns 9.803922
+Ka 0.588000 0.588000 0.588000
+Kd 0.588000 0.588000 0.588000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/strap.png
+map_Bump /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/Map__19_Normal_Bump.png
+map_Ka /Users/antoineabbou/Downloads/6ZPbRl78eRZ_amm-bDWiJfw_obj/strap.png

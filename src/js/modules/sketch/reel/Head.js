@@ -1,4 +1,4 @@
-import { Geometry } from 'three';
+  import { Geometry } from 'three';
 
 import ObjectManager from './objectManager'
 import particleSystem from './particleSystem'
@@ -22,7 +22,7 @@ export default class Head {
   }
 
   initParticleSystem(objBuffers) {
-    this.ParticleSystem = new particleSystem({count: 50000, objBuffers: objBuffers})
+    this.ParticleSystem = new particleSystem({count: 35000, objBuffers: objBuffers})
     console.log('ok')
     return this.ParticleSystem.mesh 
   }
@@ -30,7 +30,7 @@ export default class Head {
   init() {
     return new Promise(resolve => {
       this.transform().then(objBuffers => {
-        this.ParticleSystem = new particleSystem({count: 50000, objBuffers: objBuffers})
+        this.ParticleSystem = new particleSystem({count: 35000, objBuffers: objBuffers})
         // this.render()
      
         resolve(this.ParticleSystem.mesh)
@@ -78,13 +78,13 @@ export default class Head {
     
     return new Promise((resolve, reject) => {
      
-      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/soccerBall.obj']).then(objects => {
+      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/soccerBall.obj', '/sketch-threejs/img/sketch/reel/brain.obj', '/sketch-threejs/img/sketch/reel/car.obj', '/sketch-threejs/img/sketch/reel/mp3.obj',  '/sketch-threejs/img/sketch/reel/skull.obj', '/sketch-threejs/img/sketch/reel/head.obj', '/sketch-threejs/img/sketch/reel/astronaut.obj', '/sketch-threejs/img/sketch/reel/laptop.obj', '/sketch-threejs/img/sketch/reel/microscope.obj', '/sketch-threejs/img/sketch/reel/cat.obj', '/sketch-threejs/img/sketch/reel/htc.obj', '/sketch-threejs/img/sketch/reel/xbox.obj', '/sketch-threejs/img/sketch/reel/books.obj', '/sketch-threejs/img/sketch/reel/man.obj', '/sketch-threejs/img/sketch/reel/tree.obj', '/sketch-threejs/img/sketch/reel/arm.obj', '/sketch-threejs/img/sketch/reel/DNA.obj', '/sketch-threejs/img/sketch/reel/house.obj', '/sketch-threejs/img/sketch/reel/ambulance.obj', '/sketch-threejs/img/sketch/reel/heart.obj', '/sketch-threejs/img/sketch/reel/camera.obj', '/sketch-threejs/img/sketch/reel/gun.obj', '/sketch-threejs/img/sketch/reel/art.obj', '/sketch-threejs/img/sketch/reel/ball.obj', '/sketch-threejs/img/sketch/reel/chess.obj', '/sketch-threejs/img/sketch/reel/guitar.obj', '/sketch-threejs/img/sketch/reel/spaceship.obj', '/sketch-threejs/img/sketch/reel/trump.obj', '/sketch-threejs/img/sketch/reel/nike.obj', '/sketch-threejs/img/sketch/reel/statue.obj', '/sketch-threejs/img/sketch/reel/flower.obj']).then(objects => {
         let count = 0
         let objVects = []
         for (let i = 0; i < objects.length; i++) {
             this.objects = objects
             console.log(this.objects)
-            let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 50000.)
+            let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 35000.)
             objVects.push(objVect)
             if(objVect) {
                 count ++
@@ -122,12 +122,12 @@ export default class Head {
       this.ParticleSystem.mesh.geometry.attributes.oldBuffer.needsUpdate = true
       this.ParticleSystem.mesh.geometry.attributes.currentBuffer.needsUpdate = true 
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = this.animTime
-      this.ParticleSystem.mesh.rotateY(0.008)
+      this.ParticleSystem.mesh.rotateY(0.01)
 
     }
     
   
-    if(this.animTime >= 250) {
+    if(this.animTime >= 150) {
       console.log(this.ParticleSystem)
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
       this.changeObj()

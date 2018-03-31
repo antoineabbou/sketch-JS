@@ -17,7 +17,7 @@ export default class Boxes {
     this.velocity = [0, 0, 0];
     this.acceleration = [0, 0, 0];
     this.anchor = [0, 0, 0];
-    this.instances = 36;
+    this.instances = 34;
     this.core = new Core(this.instances);
     this.wire = new Wire(this.instances);
     this.article = document.querySelector('.p-sketch-outline__article')
