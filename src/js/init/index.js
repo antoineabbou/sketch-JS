@@ -1,117 +1,200 @@
 const THREE = require('three/build/three.js');
 const debounce = require('js-util/debounce');
 
-import SmoothScrollManager from '../modules/smooth_scroll_manager/SmoothScrollManager';
-import TitleObject from '../modules/index/TitleObject';
-import FrameObject from '../modules/index/FrameObject';
-import SkyOctahedron from '../modules/index/SkyOctahedron';
-import SkyOctahedronShell from '../modules/index/SkyOctahedronShell';
-import Ground from '../modules/index/Ground';
-import Debris from '../modules/index/Debris';
-import PostEffect from '../modules/index/PostEffect';
+import normalizeVector2 from '../modules/common/normalizeVector2';
+import Boxes from '../modules/sketch/reel/Boxes.js';
+import Floor from '../modules/sketch/reel/Floor.js';
+import Head from '../modules/sketch/reel/Head.js';
+
+
+import {TweenMax, Power2, TimelineLite} from "gsap";
+// var sound = require('../../sounds/audio.mp3')
 
 export default function() {
-  const scrollManager = new SmoothScrollManager();
-
   const canvas = document.getElementById('canvas-webgl');
   const renderer = new THREE.WebGLRenderer({
-    antialias: false,
+    antialias: true,
     canvas: canvas,
   });
-  const renderBack = new THREE.WebGLRenderTarget(document.body.clientWidth, window.innerHeight);
+  const renderPicked = new THREE.WebGLRenderTarget(document.body.clientWidth, window.innerHeight);
   const scene = new THREE.Scene();
-  const sceneBack = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-  const cameraBack = new THREE.PerspectiveCamera(45, document.body.clientWidth / window.innerHeight, 1, 10000);
+  const scenePicked = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(24, document.body.clientWidth / window.innerHeight, 1, 15000);
   const clock = new THREE.Clock();
 
-  const titleObject = new TitleObject();
-  const frameObject = new FrameObject();
-  const skyOctahedron = new SkyOctahedron();
-  const skyOctahedronShell = new SkyOctahedronShell();
-  const ground = new Ground();
-  const debris = [
-     new Debris(400, -500, 200),
-     new Debris(-350, -600, -50),
-     new Debris(-150, -700, -150),
-     new Debris(-500, -900, 0),
-     new Debris(100, -1100, 250),
-     new Debris(-100, -1200, -300),
-     new Debris(150, -1500, -100),
-  ];
-  const postEffect = new PostEffect(renderBack.texture);
+  const vectorTouchStart = new THREE.Vector2();
+  const vectorTouchMove = new THREE.Vector2();
+  const vectorTouchMovePrev = new THREE.Vector2();
+  const vectorTouchEnd = new THREE.Vector2();
+  const pixelBuffer = new Uint8Array(4);
 
-  const elemIntro = document.getElementsByClassName('js-transition-intro');
+  let isDrag = false;
 
+  let loader = document.querySelector('.container-loader')
+
+  //
+  // process for this sketch.
+  //
+
+  const boxes = new Boxes();
+  const floor = new Floor();
+  const head = new Head();
+
+  //
+  // common process
+  //
   const resizeWindow = () => {
     canvas.width = document.body.clientWidth;
     canvas.height = window.innerHeight;
-    cameraBack.aspect = document.body.clientWidth / window.innerHeight;
-    cameraBack.updateProjectionMatrix();
-    renderBack.setSize(document.body.clientWidth, window.innerHeight);
+    camera.aspect = document.body.clientWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
     renderer.setSize(document.body.clientWidth, window.innerHeight);
-    postEffect.resize();
+    renderPicked.setSize(document.body.clientWidth, window.innerHeight);
+    floor.resize();
   }
   const render = () => {
     const time = clock.getDelta();
-    // titleObject.render(time);
-    // skyOctahedron.render(time);
-    // skyOctahedronShell.render(time);
-    ground.render(time);
-    for (var i = 0; i < debris.length; i++) {
-      debris[i].render(time);
-    }
-    renderer.render(sceneBack, cameraBack, renderBack);
-    // postEffect.render(time);
+    renderer.setClearColor(0xf1f1f1, 1.0);
+    boxes.render(time);
+   
+    floor.render(renderer, scene, time);
+    head.render(renderer, scene, time);
     renderer.render(scene, camera);
   }
   const renderLoop = () => {
     render();
+    
     requestAnimationFrame(renderLoop);
   }
+  const touchStart = (isTouched) => {
+    isDrag = true;
+  };
+  const touchMove = (isTouched) => {
+    if (isDrag) {
+      if (isTouched) {
+        boxes.rotate((vectorTouchMove.x - vectorTouchMovePrev.x) * 2);
+      }
+    } else {
+      renderer.setClearColor(0xffffff, 1.0);
+      renderer.render(scenePicked, camera, renderPicked);
+      renderer.readRenderTargetPixels(renderPicked, vectorTouchMove.x, renderPicked.height - vectorTouchMove.y, 1, 1, pixelBuffer);
+      boxes.picked((pixelBuffer[0] << 16) | (pixelBuffer[1] << 8) | (pixelBuffer[2]));
+    }
+  };
+  const touchEnd = (isTouched) => {
+    isDrag = false;
+  };
+  const wheel = (event) => {
+    boxes.rotate(event.deltaY);
+  }
+
+  const onClick = () => {
+    boxes.picked((pixelBuffer[0] << 16) | (pixelBuffer[1] << 8) | (pixelBuffer[2]), true);
+  };
+
   const on = () => {
     window.addEventListener('resize', debounce(() => {
       resizeWindow();
     }), 1000);
-
-    scrollManager.renderNext = () => {
-      if (scrollManager.isValidSmooth()) {
-        cameraBack.position.y = scrollManager.hookes.contents.velocity[1] * 0.6;
-      } else {
-        cameraBack.position.y = scrollManager.scrollTop * -1;
-      }
-    }
+    canvas.addEventListener('mousedown', function (event) {
+      event.preventDefault();
+      vectorTouchStart.set(event.clientX, event.clientY);
+      touchStart(false);
+    });
+    document.addEventListener('mousemove', function (event) {
+      event.preventDefault();
+      vectorTouchMove.set(event.clientX, event.clientY);
+      touchMove(false);
+    });
+    document.addEventListener('mouseup', function (event) {
+      event.preventDefault();
+      vectorTouchEnd.set(event.clientX, event.clientY);
+      touchEnd(false);
+    });
+    canvas.addEventListener('wheel', function(event) {
+      event.preventDefault();
+      wheel(event);
+    });
+    canvas.addEventListener('touchstart', function (event) {
+      event.preventDefault();
+      vectorTouchStart.set(event.touches[0].clientX, event.touches[0].clientY);
+      vectorTouchMove.set(event.touches[0].clientX, event.touches[0].clientY);
+      vectorTouchMovePrev.set(event.touches[0].clientX, event.touches[0].clientY);
+      touchStart(event.touches[0].clientX, event.touches[0].clientY, true);
+    });
+    canvas.addEventListener('touchmove', function (event) {
+      event.preventDefault();
+      vectorTouchMove.set(event.touches[0].clientX, event.touches[0].clientY);
+      touchMove(true);
+      vectorTouchMovePrev.set(event.touches[0].clientX, event.touches[0].clientY);
+    });
+    canvas.addEventListener('touchend', function (event) {
+      event.preventDefault();
+      vectorTouchEnd.set(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+      touchEnd(true);
+    });
+    canvas.addEventListener("click", function (e) {
+      onClick()
+    });
   }
-  const transitionOnload = () => {
-    for (var i = 0; i < elemIntro.length; i++) {
-      const elm = elemIntro[i];
-      elm.classList.add('is-shown');
-    }
+
+  const audioManager = () => {
+    let audio = new Audio()    
+    let i = 0
+    let playlist = new Array('../../sounds/audio.mp3', '../../sounds/audio-2.mp3', '../../sounds/audio-3.mp3', '../../sounds/audio-4.mp3')
+
+    audio.addEventListener('ended', () => {
+      i = ++i < playlist.length ? i : 0
+      audio.src = playlist[i]
+      audio.play()
+    }, true)
+    audio.volume = 0.4
+    audio.src = playlist[0]
+    audio.play()
   }
 
   const init = () => {
+    audioManager()
     renderer.setSize(document.body.clientWidth, window.innerHeight);
-    renderer.setClearColor(0x111111, 1.0);
-    cameraBack.position.z = 800;
+    camera.position.set(0, 600, -3000);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    floor.mirrorCamera.position.set(0, -600, -3000);
+    floor.mirrorCamera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.newTime = 0
+    boxes.core.obj.position.set(0, 80, 0);
+    boxes.wire.obj.position.set(0, 80, 0);
+    boxes.wire.objPicked.position.set(0, 80, 0);
+    floor.obj.rotation.set(-0.5 * Math.PI, 0, 0)
+    
 
-    scene.add(postEffect.obj);
-    titleObject.loadTexture(() => {
-      sceneBack.add(titleObject.obj);
-      sceneBack.add(skyOctahedron.obj);
-      sceneBack.add(skyOctahedronShell.obj);
-      sceneBack.add(ground.obj);
-      for (var i = 0; i < debris.length; i++) {
-        sceneBack.add(debris[i].obj);
-      }
-      transitionOnload();
-    });
+    head.init().then(mesh => {
+      let hideLoaderTl = new TimelineLite({
+        delay: 2,
+      })
 
-    clock.start();
+      scene.add(mesh)
+      scene.add(boxes.core.obj);
+      scene.add(boxes.wire.obj);
+      scene.add(floor.obj);
+      scene.add(head.cubeCamera);
+      scenePicked.add(boxes.wire.objPicked);
+      mesh.scale.set(300, 300, 300)
+      mesh.position.y = 300
+      console.log('init')
+      
+      hideLoaderTl.to(loader, 1, {
+        yPercent: 100,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {
+          
+        }
+      })
+    })
 
     on();
     resizeWindow();
     renderLoop();
-    scrollManager.start();
   }
   init();
 }

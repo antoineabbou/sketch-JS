@@ -6,7 +6,6 @@
   &__title {
     line-height: 1;
     margin: 0 0 0.075em -0.05em;
-    @include flexFontSize(11);
     font-weight: 100;
     letter-spacing: 0.05em;
   }

@@ -5,25 +5,11 @@ block vars
     var page = data.pages.index;
 
 block content
-  .l-contents.js-contents
-    .p-introduction
-      .p-introduction__wrap
-        .p-introduction__row.js-transition-intro
-          | Machine learning
-        .p-introduction__row.js-transition-intro
-          |created by Antoine Abbou, Robin Blanc--Beyne, Rémi Caillot et Manon Carrour
-    .p-sketch-index
-      - var count = 0;
-      each item in data.pages
-        if (item.title !== '')
-          .p-sketch-index__item(
-            class = 'js-smooth-item js-scroll-item',
-          )
-            a(href = `/sketch-threejs${item.path}`).p-sketch-index__item-wrap
-              .p-sketch-index__item-title
-                +splitStr(item.title, 'js-split-str')
-          - count++;
-
-  .p-dummy-scroll.js-dummy-scroll
+  include ./_modules/_sketch-outline.pug
 
   canvas(id="canvas-webgl", class="p-canvas-webgl")
+  div(class="container-loader")
+    div(class="loader")
+
+  div(class="modal")
+    button(class="btn btn-close") close
