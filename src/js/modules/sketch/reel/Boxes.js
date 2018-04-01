@@ -24,7 +24,27 @@ export default class Boxes {
     this.core = new Core(this.instances);
     this.wire = new Wire(this.instances);
     this.article = document.querySelector('.p-sketch-outline__article')
-    console.log('hello world', Emitter)
+    this.modal = document.querySelector('.modal')
+    this.close = document.querySelector('.btn-close')
+    this.close.addEventListener('click', () => {
+      this.hideModalTl.to(this.modal, 1, {
+        yPercent: 0,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {
+          console.log('done')
+        }
+      })
+    })
+
+
+    this.showModalTl = new TimelineLite({
+      delay: 0.2,
+    })
+
+    this.hideModalTl = new TimelineLite({
+      delay: 0.2
+    })
 
   }
   updateRotation() {
@@ -38,7 +58,7 @@ export default class Boxes {
     if (!delta) return;
     this.anchor[0] -= delta * 0.05;
   }
-  picked(id) {
+  picked(id, isClick) {
     this.core.uniforms.pickedId.value = id;
     this.wire.uniforms.pickedId.value = id;
     if (id < this.instances && id > -1) {
@@ -53,17 +73,27 @@ export default class Boxes {
       Articles.forEach(article => {
         if(id === article.id) {
           this.article.innerHTML = 'Voici l\'article "' + article.id + '", titre : ' + article.title + ' ';
+          console.log('hello')
+          if (isClick) {
+            this.showModalTl.to(this.modal, 1, {
+              yPercent: -100,
+              transformOrigin: '100%',
+              ease: Quint.easeInOut,
+              onComplete: () => {
+                console.log('done')
+              }
+            })
+
+          }
         }
       });
     } else {
-      if(Head.launchAnimation) {
-        Head.launchAnimation = false
-        console.log(Head.launchAnimation)
-      }
+      Head.launchAnimation = false
       document.body.classList.remove('is-picked');
       this.article.classList.remove('article-show')
     }
   }
+
   render(time) {
     this.core.uniforms.time.value += time;
     this.wire.render(time);

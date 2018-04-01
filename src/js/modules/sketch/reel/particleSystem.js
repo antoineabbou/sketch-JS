@@ -67,7 +67,6 @@ class particleSystem {
 
     changeModel(id) {
         // console.log('am doing somethign here', this.currentBufferId)
-        console.log('change model', this.objBuffers)
         this.oldBufferId = this.currentBufferId
         
         // console.log(this.objBuffers)
@@ -80,9 +79,7 @@ class particleSystem {
     
         // console.log('current id', this.currentBufferId)
         
-        console.log('//////////')
-        console.log('test', this.mesh.geometry.attributes.currentBuffer.array)
-        console.log('objbuffers', this.objBuffers[this.currentBufferId])
+        
         this.mesh.geometry.attributes.currentBuffer.array = this.objBuffers[this.currentBufferId]
         
     }

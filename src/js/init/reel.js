@@ -90,6 +90,11 @@ export default function() {
   const wheel = (event) => {
     boxes.rotate(event.deltaY);
   }
+
+  const onClick = () => {
+    boxes.picked((pixelBuffer[0] << 16) | (pixelBuffer[1] << 8) | (pixelBuffer[2]), true);
+  };
+
   const on = () => {
     window.addEventListener('resize', debounce(() => {
       resizeWindow();
@@ -130,6 +135,9 @@ export default function() {
       event.preventDefault();
       vectorTouchEnd.set(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
       touchEnd(true);
+    });
+    canvas.addEventListener("click", function (e) {
+      onClick()
     });
   }
 
