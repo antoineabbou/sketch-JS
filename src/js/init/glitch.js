@@ -2,7 +2,6 @@ const THREE = require('three/build/three.js');
 const debounce = require('js-util/debounce');
 
 import normalizeVector2 from '../modules/common/normalizeVector2';
-import BackgroundImage from '../modules/sketch/glitch/BackgroundImage.js';
 import PostEffect from '../modules/sketch/glitch/PostEffect.js';
 
 export default function() {
@@ -28,7 +27,6 @@ export default function() {
   // process for this sketch.
   //
 
-  const bgImg = new BackgroundImage();
   const postEffect = new PostEffect(renderBack1.texture);
 
   //
@@ -39,7 +37,6 @@ export default function() {
     canvas.height = window.innerHeight;
     cameraBack.aspect = document.body.clientWidth / window.innerHeight;
     cameraBack.updateProjectionMatrix();
-    bgImg.resize();
     postEffect.resize();
     renderBack1.setSize(document.body.clientWidth, window.innerHeight);
     renderer.setSize(document.body.clientWidth, window.innerHeight);
@@ -111,10 +108,7 @@ export default function() {
     cameraBack.position.set(1000, 1000, 1000);
     cameraBack.lookAt(new THREE.Vector3());
 
-    bgImg.init(() => {
-      sceneBack.add(bgImg.obj);
-      scene.add(postEffect.obj);
-    })
+    scene.add(postEffect.obj);
 
     on();
     resizeWindow();

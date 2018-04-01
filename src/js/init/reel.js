@@ -7,6 +7,7 @@ import Floor from '../modules/sketch/reel/Floor.js';
 import Hill from '../modules/sketch/reel/Hill.js';
 import Head from '../modules/sketch/reel/Head.js';
 
+
 import {TweenMax, Power2, TimelineLite} from "gsap";
 // var sound = require('../../sounds/audio.mp3')
 
@@ -166,25 +167,27 @@ export default function() {
     // scene.add(hill.cubeCamera);
     
 
-    head.init().then(mesh=> {
+    head.init().then(mesh => {
       let hideLoaderTl = new TimelineLite({
-        delay: 0.4,
+        delay: 2,
       })
-  
+
+      scene.add(mesh)
+      scene.add(boxes.core.obj);
+      scene.add(boxes.wire.obj);
+      scene.add(floor.obj);
+      scene.add(head.cubeCamera);
+      scenePicked.add(boxes.wire.objPicked);
+      mesh.scale.set(300, 300, 300)
+      mesh.position.y = 300
+      console.log('init')
+      
       hideLoaderTl.to(loader, 1, {
         yPercent: 100,
         transformOrigin: '100%',
         ease: Quint.easeInOut,
         onComplete: () => {
-          scene.add(mesh)
-          scene.add(boxes.core.obj);
-          scene.add(boxes.wire.obj);
-          scene.add(floor.obj);
-          scene.add(head.cubeCamera);
-          scenePicked.add(boxes.wire.objPicked);
-          mesh.scale.set(300, 300, 300)
-          mesh.position.y = 300
-          console.log('init')
+          
         }
       })
     })
