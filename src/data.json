@@ -11,15 +11,6 @@
       "description": "Homepage",
       "path": "/",
       "color": "white"
-    },
-    "reel": {
-      "title": "reel",
-      "id": "reel",
-      "description": "Timeline about machine learning",
-      "path": "/sketch/reel.html",
-      "posted": "",
-      "update": "",
-      "color": "black"
     }
   }
 }

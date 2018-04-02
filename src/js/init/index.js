@@ -1,14 +1,13 @@
 const THREE = require('three/build/three.js');
 const debounce = require('js-util/debounce');
 
-import normalizeVector2 from '../modules/common/normalizeVector2';
-import Boxes from '../modules/sketch/reel/Boxes.js';
-import Floor from '../modules/sketch/reel/Floor.js';
-import Head from '../modules/sketch/reel/Head.js';
+import normalizeVector2 from '../modules/normalizeVector2';
+import Boxes from '../modules/Boxes.js';
+import Floor from '../modules/Floor.js';
+import Head from '../modules/Head.js';
 
 
 import {TweenMax, Power2, TimelineLite} from "gsap";
-// var sound = require('../../sounds/audio.mp3')
 
 export default function() {
   const canvas = document.getElementById('canvas-webgl');
@@ -141,7 +140,7 @@ export default function() {
   const audioManager = () => {
     let audio = new Audio()    
     let i = 0
-    let playlist = new Array('../../sounds/audio.mp3', '../../sounds/audio-2.mp3', '../../sounds/audio-3.mp3', '../../sounds/audio-4.mp3')
+    let playlist = new Array('../../img/sounds/audio.mp3', '../../img/sounds/audio-2.mp3', '../../img/sounds/audio-3.mp3', '../../img/sounds/audio-4.mp3')
 
     audio.addEventListener('ended', () => {
       i = ++i < playlist.length ? i : 0
@@ -180,7 +179,6 @@ export default function() {
       scenePicked.add(boxes.wire.objPicked);
       mesh.scale.set(300, 300, 300)
       mesh.position.y = 300
-      console.log('init')
       
       hideLoaderTl.to(loader, 1, {
         yPercent: 100,

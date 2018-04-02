@@ -32,8 +32,8 @@ export default class Floor {
       new THREE.PlaneBufferGeometry(4000, 4000),
       new THREE.RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../../glsl/sketch/reel/floor.vs'),
-        fragmentShader: glslify('../../../../glsl/sketch/reel/floor.fs'),
+        vertexShader: glslify('../../glsl/floor.vs'),
+        fragmentShader: glslify('../../glsl/floor.fs'),
         transparent: true
       })
     )

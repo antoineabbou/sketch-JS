@@ -50,8 +50,8 @@ export default class Core {
       geometry,
       new THREE.RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../../glsl/sketch/reel/core.vs'),
-        fragmentShader: glslify('../../../../glsl/sketch/reel/core.fs'),
+        vertexShader: glslify('../../glsl/core.vs'),
+        fragmentShader: glslify('../../glsl/core.fs'),
         transparent: true,
       })
     )

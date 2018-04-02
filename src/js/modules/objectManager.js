@@ -10,7 +10,6 @@ export default class ObjectManager {
         this.paths = paths
         this.loaded = false;
         this.count = 0;
-        console.log(paths)
         this.objects = [];
         return new Promise (resolve => {
             for(let i = 0; i < this.paths.length; i++) {

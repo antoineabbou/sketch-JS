@@ -51,8 +51,8 @@ class particleSystem {
         this.geometry.addAttribute('startPos', new THREE.BufferAttribute(this.startPos,3))
         this.geometry.addAttribute('rank', new THREE.BufferAttribute(this.rank,1))
         this.material = new THREE.ShaderMaterial({
-            vertexShader: glslify('../../../../glsl/sketch/reel/particles.vs'),
-            fragmentShader: glslify('../../../../glsl/sketch/reel/particles.fs'),
+            vertexShader: glslify('../../glsl/particles.vs'),
+            fragmentShader: glslify('../../glsl/particles.fs'),
             uniforms: this.uniforms, 
         })
 
@@ -66,19 +66,14 @@ class particleSystem {
     }
 
     changeModel(id) {
-        // console.log('am doing somethign here', this.currentBufferId)
         this.oldBufferId = this.currentBufferId
         
-        // console.log(this.objBuffers)
         this.mesh.geometry.attributes.oldBuffer.array = this.objBuffers[this.oldBufferId]
         if(this.oldBufferId == this.objBuffers.length-1) {
             this.currentBufferId = 0
         }else {
             this.currentBufferId = id
-        }
-    
-        // console.log('current id', this.currentBufferId)
-        
+        }        
         
         this.mesh.geometry.attributes.currentBuffer.array = this.objBuffers[this.currentBufferId]
         

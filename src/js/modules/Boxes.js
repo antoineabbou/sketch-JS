@@ -3,16 +3,16 @@ const glslify = require('glslify');
 const MathEx = require('js-util/MathEx');
 const debounce = require('js-util/debounce');
 
-import force3 from '../../common/force3';
+import force3 from './force3';
 import Core from './Core';
 import Wire from './Wire';
 
 import Head from './Head';
 
-import Emitter from '../../../init/events.js';
+import Emitter from '../init/events';
 
 
-var Articles = require('../../../../articles.json')
+var Articles = require('../../articles.json')
 
 
 export default class Boxes {
@@ -32,7 +32,6 @@ export default class Boxes {
         transformOrigin: '100%',
         ease: Quint.easeInOut,
         onComplete: () => {
-          console.log('done')
         }
       })
     })
@@ -65,7 +64,6 @@ export default class Boxes {
       if(!Head.launchAnimation) {
         Head.launchAnimation = true
         Emitter.emit('GLOBAL:TOUCH', id)
-        console.log(Head.launchAnimation)
       }
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');
@@ -73,14 +71,12 @@ export default class Boxes {
       Articles.forEach(article => {
         if(id === article.id) {
           this.article.innerHTML = 'Voici l\'article "' + article.id + '", titre : ' + article.title + ' ';
-          console.log('hello')
           if (isClick) {
             this.showModalTl.to(this.modal, 1, {
               yPercent: -100,
               transformOrigin: '100%',
               ease: Quint.easeInOut,
               onComplete: () => {
-                console.log('done')
               }
             })
 

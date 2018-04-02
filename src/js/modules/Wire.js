@@ -2,7 +2,7 @@ const THREE = require('three/build/three.js');
 const glslify = require('glslify');
 const MathEx = require('js-util/MathEx');
 
-import force3 from '../../common/force3';
+import force3 from './force3';
 
 export default class Wire {
   constructor(instances) {
@@ -52,8 +52,8 @@ export default class Wire {
       geometry,
       new THREE.RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../../glsl/sketch/reel/wire.vs'),
-        fragmentShader: glslify('../../../../glsl/sketch/reel/wire.fs'),
+        vertexShader: glslify('../../glsl/wire.vs'),
+        fragmentShader: glslify('../../glsl/wire.fs'),
         depthWrite: false,
         transparent: true,
         side: THREE.DoubleSide,
@@ -87,8 +87,8 @@ export default class Wire {
       geometry,
       new THREE.RawShaderMaterial({
         uniforms: this.uniforms,
-        vertexShader: glslify('../../../../glsl/sketch/reel/wirePicked.vs'),
-        fragmentShader: glslify('../../../../glsl/sketch/reel/wirePicked.fs'),
+        vertexShader: glslify('../../glsl/wirePicked.vs'),
+        fragmentShader: glslify('../../glsl/wirePicked.fs'),
       })
     );
   }

@@ -2,7 +2,7 @@
 
 import ObjectManager from './objectManager'
 import particleSystem from './particleSystem'
-import Emitter from '../../../init/events.js'
+import Emitter from '../init/events'
 
 const THREE = require('three/build/three.js');
 const OBJLoader = require('./OBJLoader');
@@ -23,7 +23,6 @@ export default class Head {
     this.launchAnimation = false
     this.id = null
     Emitter.on('GLOBAL:TOUCH', (id) => {
-      console.log(id)
       this.changeShape = true
       this.id = id
     })
@@ -31,7 +30,6 @@ export default class Head {
 
   initParticleSystem(objBuffers) {
     this.ParticleSystem = new particleSystem({count: 35000, objBuffers: objBuffers})
-    console.log('ok')
     return this.ParticleSystem.mesh 
   }
 
@@ -56,9 +54,7 @@ export default class Head {
               let objBuffer = this.transformVectorToBuffer(objVects[i])
              
               objBuffers.push(objBuffer)
-              console.log('ayo')
               count ++
-              console.log('ok')
               if(count == objVects.length) resolve(objBuffers)           
           }     
       })
@@ -86,12 +82,11 @@ export default class Head {
     
     return new Promise((resolve, reject) => {
      
-      this.ObjectManager.loadObject(['/sketch-threejs/img/sketch/reel/mask.obj','/sketch-threejs/img/sketch/reel/soccerBall.obj', '/sketch-threejs/img/sketch/reel/brain.obj', '/sketch-threejs/img/sketch/reel/car.obj', '/sketch-threejs/img/sketch/reel/mp3.obj',  '/sketch-threejs/img/sketch/reel/skull.obj', '/sketch-threejs/img/sketch/reel/head.obj', '/sketch-threejs/img/sketch/reel/astronaut.obj', '/sketch-threejs/img/sketch/reel/laptop.obj', '/sketch-threejs/img/sketch/reel/microscope.obj', '/sketch-threejs/img/sketch/reel/cat.obj', '/sketch-threejs/img/sketch/reel/htc.obj', '/sketch-threejs/img/sketch/reel/xbox.obj', '/sketch-threejs/img/sketch/reel/books.obj', '/sketch-threejs/img/sketch/reel/man.obj', '/sketch-threejs/img/sketch/reel/tree.obj', '/sketch-threejs/img/sketch/reel/arm.obj', '/sketch-threejs/img/sketch/reel/DNA.obj', '/sketch-threejs/img/sketch/reel/house.obj', '/sketch-threejs/img/sketch/reel/ambulance.obj', '/sketch-threejs/img/sketch/reel/heart.obj', '/sketch-threejs/img/sketch/reel/camera.obj', '/sketch-threejs/img/sketch/reel/gun.obj', '/sketch-threejs/img/sketch/reel/art.obj', '/sketch-threejs/img/sketch/reel/ball.obj', '/sketch-threejs/img/sketch/reel/chess.obj', '/sketch-threejs/img/sketch/reel/guitar.obj', '/sketch-threejs/img/sketch/reel/spaceship.obj', '/sketch-threejs/img/sketch/reel/trump.obj', '/sketch-threejs/img/sketch/reel/nike.obj', '/sketch-threejs/img/sketch/reel/statue.obj', '/sketch-threejs/img/sketch/reel/flower.obj']).then(objects => {
+      this.ObjectManager.loadObject(['/sketch-threejs/img/obj/mask.obj','/sketch-threejs/img/obj/soccerBall.obj', '/sketch-threejs/img/obj/brain.obj', '/sketch-threejs/img/obj/car.obj', '/sketch-threejs/img/obj/mp3.obj',  '/sketch-threejs/img/obj/skull.obj', '/sketch-threejs/img/obj/head.obj', '/sketch-threejs/img/obj/astronaut.obj', '/sketch-threejs/img/obj/laptop.obj', '/sketch-threejs/img/obj/microscope.obj', '/sketch-threejs/img/obj/cat.obj', '/sketch-threejs/img/obj/htc.obj', '/sketch-threejs/img/obj/xbox.obj', '/sketch-threejs/img/obj/books.obj', '/sketch-threejs/img/obj/man.obj', '/sketch-threejs/img/obj/tree.obj', '/sketch-threejs/img/obj/arm.obj', '/sketch-threejs/img/obj/DNA.obj', '/sketch-threejs/img/obj/house.obj', '/sketch-threejs/img/obj/ambulance.obj', '/sketch-threejs/img/obj/heart.obj', '/sketch-threejs/img/obj/camera.obj', '/sketch-threejs/img/obj/gun.obj', '/sketch-threejs/img/obj/art.obj', '/sketch-threejs/img/obj/ball.obj', '/sketch-threejs/img/obj/chess.obj', '/sketch-threejs/img/obj/guitar.obj', '/sketch-threejs/img/obj/spaceship.obj', '/sketch-threejs/img/obj/trump.obj', '/sketch-threejs/img/obj/nike.obj', '/sketch-threejs/img/obj/statue.obj', '/sketch-threejs/img/obj/flower.obj']).then(objects => {
         let count = 0
         let objVects = []
         for (let i = 0; i < objects.length; i++) {
             this.objects = objects
-            console.log(this.objects)
             let objVect = GeometryUtils.default.randomPointsInGeometry( objects[i].children[0].geometry, 35000.)
             objVects.push(objVect)
             if(objVect) {
@@ -100,15 +95,6 @@ export default class Head {
             }
                              
         }               
-    })
-    })
-  }
-
-  loadObject() {
-    return new Promise ((resolve, reject) => {
-      var loader = new THREE.OBJLoader(this.manager)
-      loader.load( '/sketch-threejs/img/sketch/reel/car.obj', ( object ) => {
-        resolve(object)
       })
     })
   }
@@ -120,11 +106,7 @@ export default class Head {
   }
   
   render(renderer, scene, time) {
-    
-    // if (!this.obj) {
-    //   return
-    // }
-    //console.log(this.ParticleSystem)
+
     this.animTime++
     if(this.ParticleSystem) {
     
@@ -138,19 +120,12 @@ export default class Head {
     
     if(this.changeShape) {
       this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
-      console.log('this.id = ', this.objects)
       this.changeObj(this.id)
     }  
   
-    // if(this.animTime >= 150) {
-    //   console.log(this.ParticleSystem)
-    //   this.ParticleSystem.mesh.material.uniforms.beginAnimTime.value = 0
-    //   this.changeObj()
-    // }
+  
     this.uniforms.time.value += time;
-    // this.obj.visible = false;
     this.cubeCamera.update(renderer, scene);
-    // this.obj.visible = true;
    
   }
 }

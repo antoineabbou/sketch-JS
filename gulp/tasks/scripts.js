@@ -31,7 +31,6 @@ const bundler = (entry, isWatch) => {
   const bundle = () => {
     return b.bundle()
       .on('error', err => {
-        console.log(`bundle error: ${err}`);
       })
       .pipe(source(entry))
       .pipe($.rename({
@@ -44,7 +43,6 @@ const bundler = (entry, isWatch) => {
   b
   .on('update', bundle)
   .on('log', message => {
-    console.log(message);
   });
 
   return bundle();
