@@ -25,8 +25,8 @@
   <body>
     <div class="l-page l-page--black">
       <div class="p-sketch-outline">
-        <p class="p-sketch-outline__description">Machine Learning</p>
-        <p class="p-sketch-outline__article">Cet article apparaît hihi </p>
+        <p class="p-sketch-outline__article">Article</p>
+        <p class="p-sketch-outline__article-origin">Origine</p>
       </div>
       <canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
       <div class="container-loader">
@@ -35,11 +35,10 @@
       <div class="modal">
         <button class="btn btn-close">close</button>
         <div class="article-container">
-          <canvas class="p-canvas-article" id="canvas-article"></canvas>
           <div class="article">
-            <h3 class="stagger article__title">Titre de l'article</h3>
-            <p class="stagger article__origin">Ecrit par /// le /// </p>
-            <p class="stagger article__source">Le Monde</p>
+            <h1 class="stagger article__title">Titre de l'article</h1>
+            <aside class="stagger article__origin">Ecrit par /// le /// </aside>
+            <aside class="stagger article__source">Le Monde</aside>
             <p class="stagger article__excerpt">Ceci est un résumé de ce putain d'article de merde</p>
           </div>
         </div>
@@ -49,10 +48,32 @@
         <p>Design by Robin Blanc--Beyne & Manon Carrour | Development by Antoine Abbou and Rémi Caillot</p>
       </div>
       <div class="category category--left"> 
-        <p class="category_text">CONCEPT</p>
+        <p class="category_text concept">CONCEPT</p>
       </div>
       <div class="category category--right"> 
-        <p class="category_text">BIBLIOGRAPHY</p>
+        <p class="category_text table-of-contents">TABLE OF CONTENTS</p>
+      </div>
+      <div class="concept-modal">
+        <button class="btn btn-close-concept">close</button>
+        <div class="article-container">
+          <div class="article">
+            <h3 class="stagger article__title">Titre de l'article</h3>
+            <p class="stagger article__origin">Ecrit par /// le /// </p>
+            <p class="stagger article__source">Le Monde</p>
+            <p class="stagger article__excerpt">Ceci est un résumé de ce putain d'article de merde</p>
+          </div>
+        </div>
+      </div>
+      <div class="table-modal">
+        <button class="btn btn-close-table">close</button>
+        <div class="article-container">
+          <div class="article">
+            <h3 class="stagger article__title">Titre de l'article</h3>
+            <p class="stagger article__origin">Ecrit par /// le /// </p>
+            <p class="stagger article__source">Le Monde</p>
+            <p class="stagger article__excerpt">Ceci est un résumé de ce putain d'article de merde</p>
+          </div>
+        </div>
       </div>
     </div>
     <script src="/machine-learning/js/main.min.js"></script>

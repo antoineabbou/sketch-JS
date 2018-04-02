@@ -25,7 +25,14 @@ export default class Boxes {
     this.wire = new Wire(this.instances);
 
     this.article = document.querySelector('.p-sketch-outline__article')
-    this.articleOrigin = document.querySelector('.p-sketch-outline__article-origin')
+    this.articleTimeline = document.querySelector('.p-sketch-outline__article-origin')
+    
+    
+    this.articleTitle = document.querySelector('.article__title')
+    this.articleOrigin = document.querySelector('.article__origin')
+    this.articleSource = document.querySelector('.article__source')
+    this.articleExcerpt = document.querySelector('.article__excerpt')
+
 
 
     this.modal = document.querySelector('.modal')
@@ -77,31 +84,36 @@ export default class Boxes {
       }
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');
-      this.articleOrigin.classList.add('article-show');
+      this.articleTimeline.classList.add('article-show');
 
       
       Articles.forEach(article => {
         if(id === article.id) {
           this.article.innerHTML = article.title
-          this.articleOrigin.innerHTML = article.title
-          this.article.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
+          this.articleTimeline.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
+
           if (isClick) {
-            console.log('hello')
+            this.articleTitle.innerHTML = article.title
+            this.articleOrigin.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
+            this.articleSource.innerHTML = article.source
+            this.articleExcerpt.innerHTML = article.summary
+
+
             this.showModalTl.to(this.modal, 1, {
               yPercent: -100,
               transformOrigin: '100%',
               ease: Quint.easeInOut,
               onComplete: () => {    
-                this.staggerTl.staggerTo(this.staggerContent, 1, {
-                  cycle: {
-                    y: (i) => {
-                      return - (i + 1) * 20
-                    }
-                  },
-                  alpha: 1,
-                  ease: Expo.easeOut,
-                  clearProps: 'opacity'
-                }, 0.1, 'start')
+                // this.staggerTl.staggerTo(this.staggerContent, 1, {
+                //   cycle: {
+                //     y: (i) => {
+                //       return - (i + 1) * 20
+                //     }
+                //   },
+                //   alpha: 1,
+                //   ease: Expo.easeOut,
+                //   clearProps: 'opacity'
+                // }, 0.1, 'start')
               }
             })  
 
@@ -112,7 +124,7 @@ export default class Boxes {
       Head.launchAnimation = false
       document.body.classList.remove('is-picked');
       this.article.classList.remove('article-show')
-      this.articleOrigin.classList.remove('article-show')
+      this.articleTimeline.classList.remove('article-show')
     }
   }
 
