@@ -23,7 +23,11 @@ export default class Boxes {
     this.instances = 32;
     this.core = new Core(this.instances);
     this.wire = new Wire(this.instances);
+
     this.article = document.querySelector('.p-sketch-outline__article')
+    this.articleOrigin = document.querySelector('.p-sketch-outline__article-origin')
+
+
     this.modal = document.querySelector('.modal')
     this.close = document.querySelector('.btn-close')
     this.close.addEventListener('click', () => {
@@ -44,6 +48,12 @@ export default class Boxes {
     this.hideModalTl = new TimelineLite({
       delay: 0.2
     })
+
+    this.staggerTl = new TimelineLite({
+      delay: 1
+    })
+
+    this.staggerContent = document.querySelectorAll('.stagger')
 
   }
   updateRotation() {
@@ -67,18 +77,33 @@ export default class Boxes {
       }
       document.body.classList.add('is-picked');
       this.article.classList.add('article-show');
+      this.articleOrigin.classList.add('article-show');
+
       
       Articles.forEach(article => {
         if(id === article.id) {
-          this.article.innerHTML = 'Voici l\'article "' + article.id + '", titre : ' + article.title + ' ';
+          this.article.innerHTML = article.title
+          this.articleOrigin.innerHTML = article.title
+          this.article.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
           if (isClick) {
+            console.log('hello')
             this.showModalTl.to(this.modal, 1, {
               yPercent: -100,
               transformOrigin: '100%',
               ease: Quint.easeInOut,
-              onComplete: () => {
+              onComplete: () => {    
+                this.staggerTl.staggerTo(this.staggerContent, 1, {
+                  cycle: {
+                    y: (i) => {
+                      return - (i + 1) * 20
+                    }
+                  },
+                  alpha: 1,
+                  ease: Expo.easeOut,
+                  clearProps: 'opacity'
+                }, 0.1, 'start')
               }
-            })
+            })  
 
           }
         }
@@ -87,6 +112,7 @@ export default class Boxes {
       Head.launchAnimation = false
       document.body.classList.remove('is-picked');
       this.article.classList.remove('article-show')
+      this.articleOrigin.classList.remove('article-show')
     }
   }
 

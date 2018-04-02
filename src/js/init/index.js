@@ -31,6 +31,34 @@ export default function() {
 
   let loader = document.querySelector('.container-loader')
 
+
+  let concept = document.querySelector('.concept')
+  let tableOfContents = document.querySelector('.table-of-contents')
+
+  let conceptModal = document.querySelector('.concept-modal')
+  let tableModal = document.querySelector('.table-modal')
+
+
+  let showConceptTl = new TimelineLite({
+    delay: 0.2
+  })
+
+  let showTableTl = new TimelineLite({
+    delay: 0.2
+  })
+
+  let hideConceptTl = new TimelineLite({
+    delay: 0.2
+  })
+
+  let hideTableTl = new TimelineLite({
+    delay: 0.2
+  })
+
+
+  let closeConcept = document.querySelector('.btn-close-concept')
+  let closeTable = document.querySelector('.btn-close-table')
+
   //
   // process for this sketch.
   //
@@ -152,8 +180,54 @@ export default function() {
     audio.play()
   }
 
+  const addListeners = () => {
+    concept.addEventListener('click', () => {
+      showConceptTl.to(conceptModal, 1, {
+        xPercent: 100,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {    
+        }
+      })  
+    })
+    
+    tableOfContents.addEventListener('click', () => {
+      showTableTl.to(tableModal, 1, {
+        xPercent: -100,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {    
+        }
+      })  
+    })
+
+    closeConcept.addEventListener('click', () => {
+      hideConceptTl.to(conceptModal, 1, {
+        xPercent: -100,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {
+        }
+      })
+    })
+
+    
+    closeTable.addEventListener('click', () => {
+      hideTableTl.to(tableModal, 1, {
+        xPercent: 100,
+        transformOrigin: '100%',
+        ease: Quint.easeInOut,
+        onComplete: () => {
+        }
+      })
+    })
+  
+  } 
+
   const init = () => {
     audioManager()
+    addListeners()
+
     renderer.setSize(document.body.clientWidth, window.innerHeight);
     camera.position.set(0, 600, -3000);
     camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -164,6 +238,7 @@ export default function() {
     boxes.wire.obj.position.set(0, 80, 0);
     boxes.wire.objPicked.position.set(0, 80, 0);
     floor.obj.rotation.set(-0.5 * Math.PI, 0, 0)
+
     
 
     head.init().then(mesh => {

@@ -7,9 +7,47 @@ block vars
 block content
   include ./_modules/_sketch-outline.pug
 
+  
   canvas(id="canvas-webgl", class="p-canvas-webgl")
   div(class="container-loader")
     div(class="loader")
 
   div(class="modal")
     button(class="btn btn-close") close
+    div(class="article-container")
+      div(class="article")
+        h3(class="stagger article__title") Titre de l'article
+        p(class="stagger article__origin") Ecrit par /// le /// 
+        p(class="stagger article__source") Le Monde
+        p(class="stagger article__excerpt") Ceci est un résumé de ce putain d'article de merde
+
+  div(class="introduction")
+    h1(class="title") Machine learning
+    p Design by Robin Blanc--Beyne & Manon Carrour | Development by Antoine Abbou and Rémi Caillot
+
+  div(class="category category--left") 
+    p(class="category_text concept") CONCEPT
+  
+  div(class="category category--right") 
+    p(class="category_text table-of-contents") TABLE OF CONTENTS
+
+
+
+  div(class="concept-modal")
+    button(class="btn btn-close-concept") close
+    div(class="article-container")
+      div(class="article")
+        h3(class="stagger article__title") Titre de l'article
+        p(class="stagger article__origin") Ecrit par /// le /// 
+        p(class="stagger article__source") Le Monde
+        p(class="stagger article__excerpt") Ceci est un résumé de ce putain d'article de merde
+
+  
+  div(class="table-modal")
+    button(class="btn btn-close-table") close
+    div(class="article-container")
+      div(class="article")
+        h3(class="stagger article__title") Titre de l'article
+        p(class="stagger article__origin") Ecrit par /// le /// 
+        p(class="stagger article__source") Le Monde
+        p(class="stagger article__excerpt") Ceci est un résumé de ce putain d'article de merde

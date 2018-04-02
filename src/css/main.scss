@@ -1,6 +1,42 @@
 @charset "UTF-8";
 
 @import url('https://fonts.googleapis.com/css?family=Homenaje');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+
+@font-face {
+	font-family: "Nimbus-Bold";
+	src: url("../font/NimbusSanL-Bold.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "test";
+	src: url("../font/test.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "gza";
+	src: url("../font/gza.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "adjuster-bold";
+	src: url("../font/adjuster-bold.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "adjuster";
+	src: url("../font/adjuster.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "terminal";
+	src: url("../font/terminal.ttf") format("truetype")
+}
+
+@font-face {
+	font-family: "terminal-open";
+	src: url("../font/terminal-open.otf") format("truetype")
+}
 
 
 // ==========================================================================

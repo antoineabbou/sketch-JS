@@ -1,7 +1,7 @@
 .p-sketch-outline {
   position: fixed;
   z-index: 100;
-  bottom: 25px;
+  top: 25px;
   left: 20px;
   &__title {
     line-height: 1;
@@ -17,7 +17,8 @@
     line-height: 1;
     margin: 10px 0 0;
   }
-  &__article {
+  &__article, 
+  &__article-origin {
     opacity: 0; 
     visibility: hidden;
     transition: all .5s ease-in-out
@@ -27,5 +28,5 @@
 .article-show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(-10px);
+  transform: translateX(20px);
 }

@@ -14,7 +14,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative; 
-  z-index:100000;
+  z-index:100000000;
   background: #1A1A1A;
 
   &.show {
@@ -91,10 +91,27 @@ body {
   }
 }
 
-.modal {
-  background: red;
+.modal, .concept-modal, .table-modal {
+  background: white;
   height: 100vh; 
   width: 100vw;
-  position: relative; 
   z-index: 2000000;
 }
+
+.modal {
+  position: relative; 
+}
+
+.concept-modal, .table-modal {
+  position: absolute;
+  top: 0%;
+}
+
+.concept-modal {
+  left: -100%
+}
+
+.table-modal {
+  left: 100%
+}
+
