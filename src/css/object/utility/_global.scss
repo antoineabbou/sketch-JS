@@ -81,6 +81,7 @@ html {
   border-radius: 100px;
   transition: transform 0.3s ease-out;
   z-index: 1000000;
+  pointer-events: none;
 
   &.is-moving {
     transform: scale(0.7);
