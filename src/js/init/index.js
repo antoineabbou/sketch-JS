@@ -59,6 +59,30 @@ export default function() {
   let closeConcept = document.querySelector('.btn-close-concept')
   let closeTable = document.querySelector('.btn-close-table')
 
+
+  /*************
+   * THIS IS GOOD MAMENE CURSOR 
+   */
+
+  // http://ahrengot.com/tutorials/greensock-javascript-animation
+
+
+  let cursor = document.querySelector('.cursor')
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.classList.add('is-moving')
+    TweenLite.to(cursor, 0.6, {
+      left: e.pageX,
+      top: e.pageY,
+      ease: Power4.easeOut  
+    })
+    clearTimeout(timer)
+
+    let timer = setTimeout(() => {
+      cursor.classList.remove('is-moving')
+    }, 300)
+  })
+
   //
   // process for this sketch.
   //

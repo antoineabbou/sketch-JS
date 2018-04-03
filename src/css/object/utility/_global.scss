@@ -68,3 +68,21 @@ html {
 // .stagger {
 //   opacity: 0;
 // } 
+
+
+.cursor {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  margin: -12px 0 0 -12px;
+  border: 2px solid #2a2a2a;
+  border-radius: 100px;
+  transition: transform 0.3s ease-out;
+  z-index: 1000000;
+
+  &.is-moving {
+    transform: scale(0.7);
+  }
+}
