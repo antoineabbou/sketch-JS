@@ -1,5 +1,8 @@
 html {
   height: 100%;
+  ::-webkit-scrollbar { 
+    display: none; 
+  }
   body {
     min-height: 100%;
     overflow-y: scroll;
@@ -136,10 +139,13 @@ html {
       border-right: 1px solid white;
       display:flex;
       
-      .arrow {
-        background: white;
-        padding: 10px;
+      a {
         align-self: flex-end;
+        display: flex;
+        .arrow {
+          background: white;
+          padding: 10px;
+        }
       }
     } 
 
