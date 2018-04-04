@@ -105,7 +105,7 @@ export default function() {
   }
   const render = () => {
     const time = clock.getDelta();
-    renderer.setClearColor(0xf1f1f1, 1.0);
+    renderer.setClearColor(0x1a1a1a, 1.0);
     boxes.render(time);
    
     floor.render(renderer, scene, time);
@@ -126,7 +126,7 @@ export default function() {
         boxes.rotate((vectorTouchMove.x - vectorTouchMovePrev.x) * 2);
       }
     } else {
-      renderer.setClearColor(0xffffff, 1.0);
+      renderer.setClearColor(0x1a1a1a, 1.0);
       renderer.render(scenePicked, camera, renderPicked);
       renderer.readRenderTargetPixels(renderPicked, vectorTouchMove.x, renderPicked.height - vectorTouchMove.y, 1, 1, pixelBuffer);
       boxes.picked((pixelBuffer[0] << 16) | (pixelBuffer[1] << 8) | (pixelBuffer[2]));
