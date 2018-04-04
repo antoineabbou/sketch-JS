@@ -35,14 +35,16 @@ export default class Boxes {
 
 
 
-    this.modal = document.querySelector('.modal')
-    this.close = document.querySelector('.btn-close')
+    this.modal = document.querySelector('.test')
+    this.close = document.querySelector('.cross')
     this.close.addEventListener('click', () => {
       this.hideModalTl.to(this.modal, 1, {
         yPercent: 0,
         transformOrigin: '100%',
+        alpha: 0,
         ease: Quint.easeInOut,
         onComplete: () => {
+          this.modal.style.display = 'none'
         }
       })
     })
@@ -98,9 +100,10 @@ export default class Boxes {
             this.articleSource.innerHTML = article.source
             this.articleExcerpt.innerHTML = article.summary
 
-
+            this.modal.style.display = 'block'
             this.showModalTl.to(this.modal, 1, {
-              yPercent: -100,
+              yPercent: -30,
+              alpha: 1,
               transformOrigin: '100%',
               ease: Quint.easeInOut,
               onComplete: () => {    
