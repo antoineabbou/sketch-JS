@@ -34,8 +34,9 @@ export default class Boxes {
     this.articleExcerpt = document.querySelector('.article__excerpt')
 
 
-
+    this.modalOpen = false
     this.modal = document.querySelector('.test')
+
     this.close = document.querySelector('.cross')
     this.close.addEventListener('click', () => {
       this.hideModalTl.to(this.modal, 1, {
@@ -48,6 +49,40 @@ export default class Boxes {
         }
       })
     })
+
+    window.addEventListener('keyup', (e) => {
+      if(e.keyCode === 27) {
+        this.hideModalTl.to(this.modal, 1, {
+          yPercent: 0,
+          transformOrigin: '100%',
+          alpha: 0,
+          ease: Quint.easeInOut,
+          onComplete: () => {
+            this.modal.style.display = 'none'
+            this.modalOpen = false
+          }
+        })
+      }
+    })
+          
+    window.addEventListener('click', (e) => {   
+      if (!this.modal.contains(e.target)){
+        console.log(this.modalOpen)
+        
+        if(this.modalOpen) {
+          this.hideModalTl.to(this.modal, 1, {
+            yPercent: 0,
+            transformOrigin: '100%',
+            alpha: 0,
+            ease: Quint.easeInOut,
+            onComplete: () => {
+              this.modal.style.display = 'none'
+              this.modalOpen = false
+            }
+          })
+        }
+      }
+    });
 
 
     this.showModalTl = new TimelineLite({
@@ -99,7 +134,8 @@ export default class Boxes {
             this.articleOrigin.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
             this.articleSource.innerHTML = article.source
             this.articleExcerpt.innerHTML = article.summary
-
+            
+        
             this.modal.style.display = 'block'
             this.showModalTl.to(this.modal, 1, {
               yPercent: -30,
@@ -107,6 +143,7 @@ export default class Boxes {
               transformOrigin: '100%',
               ease: Quint.easeInOut,
               onComplete: () => {    
+                this.modalOpen = true
                 // this.staggerTl.staggerTo(this.staggerContent, 1, {
                 //   cycle: {
                 //     y: (i) => {
