@@ -29,7 +29,9 @@ export default class Boxes {
     
     
     this.articleTitle = document.querySelector('.article__title')
-    this.articleOrigin = document.querySelector('.article__origin')
+    this.articleTheme = document.querySelector('.article__theme')
+    this.articleAuthor = document.querySelector('.article__author')
+    this.articleDate = document.querySelector('.article__date')
     this.articleSource = document.querySelector('.article__source')
     this.articleExcerpt = document.querySelector('.article__excerpt')
 
@@ -45,6 +47,7 @@ export default class Boxes {
         alpha: 0,
         ease: Quint.easeInOut,
         onComplete: () => {
+          Emitter.emit('GLOBAL:HIDE')
           this.modal.style.display = 'none'
         }
       })
@@ -60,29 +63,31 @@ export default class Boxes {
           onComplete: () => {
             this.modal.style.display = 'none'
             this.modalOpen = false
+            Emitter.emit('GLOBAL:HIDE')
           }
         })
       }
     })
           
-    window.addEventListener('click', (e) => {   
-      if (!this.modal.contains(e.target)){
-        console.log(this.modalOpen)
+    // window.addEventListener('click', (e) => {   
+    //   if (!this.modal.contains(e.target)){
+    //     console.log(this.modalOpen)
         
-        if(this.modalOpen) {
-          this.hideModalTl.to(this.modal, 1, {
-            yPercent: 0,
-            transformOrigin: '100%',
-            alpha: 0,
-            ease: Quint.easeInOut,
-            onComplete: () => {
-              this.modal.style.display = 'none'
-              this.modalOpen = false
-            }
-          })
-        }
-      }
-    });
+    //     if(this.modalOpen) {
+    //       this.hideModalTl.to(this.modal, 1, {
+    //         yPercent: 0,
+    //         transformOrigin: '100%',
+    //         alpha: 0,
+    //         ease: Quint.easeInOut,
+    //         onComplete: () => {
+    //           this.modal.style.display = 'none'
+    //           this.modalOpen = false
+    //           Emitter.emit('GLOBAL:HIDE')
+    //         }
+    //       })
+    //     }
+    //   }
+    // });
 
 
     this.showModalTl = new TimelineLite({
@@ -130,8 +135,11 @@ export default class Boxes {
           this.articleTimeline.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
 
           if (isClick) {
+            Emitter.emit('GLOBAL:SHOW')
             this.articleTitle.innerHTML = article.title
-            this.articleOrigin.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
+            this.articleTheme.innerHTML = article.theme
+            this.articleDate.innerHTML = article.date
+            this.articleAuthor.innerHTML = article.author
             this.articleSource.innerHTML = article.source
             this.articleExcerpt.innerHTML = article.summary
             

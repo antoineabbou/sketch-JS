@@ -10,6 +10,12 @@ html {
     letter-spacing: 0.15em;
     background-color: #111;
     overflow: hidden;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently */
     &.is-opened-index {
       overflow: auto;
     }
@@ -98,7 +104,7 @@ html {
   left: 50%; 
   transform: translate(-50%, -30%);
   max-width: 500px; 
-  height: 432px;
+  max-height: 432px;
   background: #1A1A1A; 
   font-family: 'Space Mono', monospace;
   display:none;

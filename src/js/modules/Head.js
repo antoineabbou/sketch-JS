@@ -22,9 +22,18 @@ export default class Head {
     this.animTime = 0
     this.launchAnimation = false
     this.id = null
+
+    Emitter.on('GLOBAL:SHOW', () => {
+      this.showModal = true
+    })
+    Emitter.on('GLOBAL:HIDE', () => {
+      this.showModal = false
+    })
     Emitter.on('GLOBAL:TOUCH', (id) => {
-      this.changeShape = true
-      this.id = id
+      if(!this.showModal) {
+        this.changeShape = true
+        this.id = id
+      }
     })
   }
 

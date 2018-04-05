@@ -71,7 +71,7 @@ export default function() {
 
   document.addEventListener('mousemove', (e) => {
     cursor.classList.add('is-moving')
-    TweenLite.to(cursor, 0.6, {
+    TweenLite.to(cursor, 1, {
       left: e.pageX,
       top: e.pageY,
       ease: Power4.easeOut  
