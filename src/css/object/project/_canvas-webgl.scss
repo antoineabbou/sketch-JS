@@ -92,7 +92,7 @@ body {
 }
 
 .modal, .concept-modal, .table-modal {
-  background: white;
+  background: #1A1A1A;
   height: 100vh; 
   width: 100vw;
   z-index: 2000000;
@@ -109,12 +109,61 @@ body {
   top: 0%;
 }
 
-.concept-modal {
-  left: -100%
-}
-
 .table-modal {
   left: 100%
 }
+
+.concept-modal {
+  left: -100%; 
+  overflow:scroll;
+
+  .title {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px; 
+    line-height: 18px;
+    margin: 100px 0px 0px 100px;
+  }  
+
+  .concept-modal__content {
+    padding: 30px 100px 0px 100px;
+
+    .header {
+      max-width: 500px;
+
+      .subtitle {
+        font-family: 'Space Mono', monospace;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 44px;
+        margin-top: 40px;
+      }
+
+      .excerpt {
+        font-family: 'helvetica';
+        font-size: 14px; 
+      }
+    }
+    
+    .content {
+      display: flex;
+      align-items: center; 
+      justify-content: space-around;
+
+      .content__text {
+        font-family: 'helvetica'; 
+        font-size: 11px; 
+        margin-top: 50px;
+
+        &:first-child {
+          margin-right: 50px;
+        }
+
+        &:last-child {
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+} 
 
 

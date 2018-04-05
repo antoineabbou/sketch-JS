@@ -33,29 +33,18 @@
       <div class="container-loader">
         <div class="loader"></div>
       </div>
-      <div class="modal">
-        <button class="btn btn-close">close</button>
-        <div class="articlecontainer">
-          <div class="article">
-            <h1 class="stagger article__title">Titre de l'article</h1>
-            <aside class="stagger article__origin">Ecrit par /// le /// </aside>
-            <aside class="stagger article__source">Le Monde</aside>
-            <p class="stagger article__excerpt">Ceci est un résumé de ce putain d'article de merde</p>
-          </div>
-        </div>
-      </div>
       <div class="test">
         <div class="header">
-          <p class="date">22.04.18</p>
-          <p class="origin">Par author, source</p><img class="cross" src="../img/svg/cross.svg" alt="cross">
+          <p class="date article__date">22.04.18</p>
+          <p class="origin">Par <span class="article__author">author</span>, <span class="article__source">source</span></p><img class="cross" src="../img/svg/cross.svg" alt="cross">
         </div>
         <div class="grid">
           <div class="left"><a href="https://github.com/antoineabbou" target="blank"><img class="link arrow" src="../img/svg/arrow.svg" alt="arrow"></a></div>
           <div class="right">
-            <h1 class="title">Lorem Ipsum ? Lorem !</h1>
+            <h1 class="title article__title">Lorem Ipsum ? Lorem !</h1>
             <div class="content">
-              <p class="p--italic p--grey">Lorem ipsum dolor sit amet</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p class="p--italic p--grey article__theme">Lorem ipsum dolor sit amet</p>
+              <p class="article__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
         </div>
@@ -70,8 +59,7 @@
       <div class="category category--right"> 
         <p class="category_text table-of-contents">TABLE OF CONTENTS</p>
       </div>
-      <div class="concept-modal">
-        <button class="btn btn-close-concept">close</button>
+      <div class="table-modal"><img class="btn btn-close-table" src="../img/svg/cross-black.svg">
         <div class="article-container">
           <div class="article">
             <h3 class="stagger article__title">Titre de l'article</h3>
@@ -81,14 +69,29 @@
           </div>
         </div>
       </div>
-      <div class="table-modal">
-        <button class="btn btn-close-table">close</button>
-        <div class="article-container">
-          <div class="article">
-            <h3 class="stagger article__title">Titre de l'article</h3>
-            <p class="stagger article__origin">Ecrit par /// le /// </p>
-            <p class="stagger article__source">Le Monde</p>
-            <p class="stagger article__excerpt">Ceci est un résumé de ce putain d'article de merde</p>
+      <div class="concept-modal">
+        <button class="btn btn-close-concept"> </button>
+        <h2 class="title">Machine learning</h2>
+        <div class="concept-modal__content concept">
+          <div class="header">
+            <h1 class="subtitle">Concept</h1>
+            <p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          </div>
+          <div class="content"> 
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+        <div class="concept-modal__content analysis">
+          <div class="header">
+            <h1 class="subtitle">Analyse</h1>
+            <p class="excerpt"></p>
+          </div>
+          <div class="content">
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="content__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           </div>
         </div>
       </div>
