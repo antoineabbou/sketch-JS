@@ -39,6 +39,11 @@ export default function() {
   let tableModal = document.querySelector('.table-modal')
 
 
+  let conceptTitle = document.querySelector('.concept-modal .concept')
+  let conceptContent = document.querySelector('.concept')
+
+
+
   let showConceptTl = new TimelineLite({
     delay: 0.2
   })
@@ -210,9 +215,13 @@ export default function() {
         xPercent: 100,
         transformOrigin: '100%',
         ease: Quint.easeInOut,
-        onComplete: () => {    
-        }
-      })  
+      })
+      showConceptTl.from(conceptTitle, 1, {
+        x: -20,
+        alpha: 0,
+        ease: Expo.easeOut,
+        clearProps: 'opacity'
+      }) 
     })
     
     tableOfContents.addEventListener('click', () => {

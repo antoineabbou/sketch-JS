@@ -117,15 +117,27 @@ body {
   left: -100%; 
   overflow:scroll;
 
+  .btn-close-concept {
+    width:20px;
+    height:20px;
+    position: fixed;
+    top: 0; 
+    right: 0;
+    padding: 10px;
+    background:white;
+    img {
+      width: 100%
+    }
+  }
+
   .title {
     font-family: 'Space Mono', monospace;
     font-size: 18px; 
-    line-height: 18px;
-    margin: 100px 0px 0px 100px;
+    line-height: 22px;
+    margin:0px;
   }  
 
   .concept-modal__content {
-    padding: 30px 100px 0px 100px;
 
     .header {
       max-width: 500px;
@@ -135,7 +147,7 @@ body {
         font-weight: bold;
         font-size: 40px;
         line-height: 44px;
-        margin-top: 40px;
+        margin: 0px;
       }
 
       .excerpt {
@@ -152,7 +164,6 @@ body {
       .content__text {
         font-family: 'helvetica'; 
         font-size: 11px; 
-        margin-top: 50px;
 
         &:first-child {
           margin-right: 50px;
