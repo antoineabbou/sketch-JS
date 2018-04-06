@@ -117,18 +117,6 @@ body {
   left: -100%; 
   overflow:scroll;
 
-  .btn-close-concept {
-    width:20px;
-    height:20px;
-    position: fixed;
-    top: 0; 
-    right: 0;
-    padding: 10px;
-    background:white;
-    img {
-      width: 100%
-    }
-  }
 
   .title {
     font-family: 'Space Mono', monospace;
@@ -178,3 +166,31 @@ body {
 } 
 
 
+.btn-close-concept, .btn-close-table {
+  width:20px;
+  height:20px;
+  position: absolute;
+  top: 0; 
+  right: 0;
+  padding: 10px;
+  background:white;
+  z-index: 100000000000;
+  img {
+    width: 100%
+  }
+}
+
+
+
+.items {
+  display: flex;
+  flex-wrap:wrap;
+
+  .item-container {
+    display: inline-block;
+    border-left: white solid 1px;
+    flex: 0 0 20%;
+    padding-left: 30px;
+    margin-top: 30px;
+  }
+}

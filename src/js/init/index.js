@@ -42,6 +42,9 @@ export default function() {
   let conceptTitle = document.querySelector('.concept-modal .concept')
   let conceptContent = document.querySelector('.concept')
 
+  let staggerConcept = document.querySelectorAll('.concept-modal .stagger')
+  let staggerTable = document.querySelectorAll('.table-modal .stagger')
+
 
 
   let showConceptTl = new TimelineLite({
@@ -216,8 +219,12 @@ export default function() {
         transformOrigin: '100%',
         ease: Quint.easeInOut,
       })
-      showConceptTl.from(conceptTitle, 1, {
-        x: -20,
+      showConceptTl.staggerFrom(staggerConcept, 1.3, {
+        cycle: {
+          x: (i) => {
+            return - (i + 1) * 20
+          }
+        },
         alpha: 0,
         ease: Expo.easeOut,
         clearProps: 'opacity'
@@ -230,9 +237,18 @@ export default function() {
         xPercent: -100,
         transformOrigin: '100%',
         ease: Quint.easeInOut,
-        onComplete: () => {    
-        }
-      })  
+      })
+      showTableTl.staggerFrom(staggerTable, 1.3, {
+        cycle: {
+          x: (i) => {
+            return (i + 1) * 20
+          }
+        },
+        alpha: 0,
+        ease: Expo.easeOut,
+        clearProps: 'opacity'
+      }) 
+      
     })
 
     closeConcept.addEventListener('click', () => {
