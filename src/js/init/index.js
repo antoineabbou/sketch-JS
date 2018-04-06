@@ -117,7 +117,7 @@ export default function() {
     boxes.render(time);
    
     floor.render(renderer, scene, time);
-    // head.render(renderer, scene, time);
+    head.render(renderer, scene, time);
     renderer.render(scene, camera);
   }
   const renderLoop = () => {

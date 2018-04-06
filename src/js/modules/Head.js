@@ -82,7 +82,7 @@ export default class Head {
        
         objBuffer[objBufferIterator++] = positions[Math.floor((i)/3)].z  
     }
-    
+
     return objBuffer
 }
 
@@ -91,7 +91,7 @@ export default class Head {
     
     return new Promise((resolve, reject) => {
      
-      this.ObjectManager.loadObject(['/machine-learning/img/obj/flower.obj']).then(objects => {
+      this.ObjectManager.loadObject(['/machine-learning/img/obj/mask.obj','/machine-learning/img/obj/soccerBall.obj', '/machine-learning/img/obj/brain.obj', '/machine-learning/img/obj/car.obj', '/machine-learning/img/obj/mp3.obj',  '/machine-learning/img/obj/skull.obj', '/machine-learning/img/obj/head.obj', '/machine-learning/img/obj/astronaut.obj', '/machine-learning/img/obj/laptop.obj', '/machine-learning/img/obj/microscope.obj', '/machine-learning/img/obj/cat.obj', '/machine-learning/img/obj/htc.obj', '/machine-learning/img/obj/xbox.obj', '/machine-learning/img/obj/books.obj', '/machine-learning/img/obj/man.obj', '/machine-learning/img/obj/tree.obj', '/machine-learning/img/obj/arm.obj', '/machine-learning/img/obj/DNA.obj', '/machine-learning/img/obj/house.obj', '/machine-learning/img/obj/ambulance.obj', '/machine-learning/img/obj/heart.obj', '/machine-learning/img/obj/camera.obj', '/machine-learning/img/obj/gun.obj', '/machine-learning/img/obj/art.obj', '/machine-learning/img/obj/ball.obj', '/machine-learning/img/obj/chess.obj', '/machine-learning/img/obj/guitar.obj', '/machine-learning/img/obj/spaceship.obj', '/machine-learning/img/obj/trump.obj', '/machine-learning/img/obj/nike.obj', '/machine-learning/img/obj/statue.obj', '/machine-learning/img/obj/flower.obj']).then(objects => {
         let count = 0
         let objVects = []
         for (let i = 0; i < objects.length; i++) {
@@ -138,5 +138,3 @@ export default class Head {
    
   }
 }
-
-// /machine-learning/img/obj/mask.obj','/machine-learning/img/obj/soccerBall.obj', '/machine-learning/img/obj/brain.obj', '/machine-learning/img/obj/car.obj', '/machine-learning/img/obj/mp3.obj',  '/machine-learning/img/obj/skull.obj', '/machine-learning/img/obj/head.obj', '/machine-learning/img/obj/astronaut.obj', '/machine-learning/img/obj/laptop.obj', '/machine-learning/img/obj/microscope.obj', '/machine-learning/img/obj/cat.obj', '/machine-learning/img/obj/htc.obj', '/machine-learning/img/obj/xbox.obj', '/machine-learning/img/obj/books.obj', '/machine-learning/img/obj/man.obj', '/machine-learning/img/obj/tree.obj', '/machine-learning/img/obj/arm.obj', '/machine-learning/img/obj/DNA.obj', '/machine-learning/img/obj/house.obj', '/machine-learning/img/obj/ambulance.obj', '/machine-learning/img/obj/heart.obj', '/machine-learning/img/obj/camera.obj', '/machine-learning/img/obj/gun.obj', '/machine-learning/img/obj/art.obj', '/machine-learning/img/obj/ball.obj', '/machine-learning/img/obj/chess.obj', '/machine-learning/img/obj/guitar.obj', '/machine-learning/img/obj/spaceship.obj', '/machine-learning/img/obj/trump.obj', '/machine-learning/img/obj/nike.obj', '/machine-learning/img/obj/statue.obj', 
