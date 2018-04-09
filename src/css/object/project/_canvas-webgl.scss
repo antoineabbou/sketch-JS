@@ -115,6 +115,7 @@ body {
 
 .concept-modal {
   left: -100%; 
+  // left: 0%; 
   overflow:scroll;
 
 
@@ -122,10 +123,11 @@ body {
     font-family: 'Space Mono', monospace;
     font-size: 18px; 
     line-height: 22px;
-    margin:0px;
+    margin: 80px; 
   }  
 
   .concept-modal__content {
+    margin: 0px 80px;
 
     .header {
       max-width: 500px;
@@ -135,12 +137,18 @@ body {
         font-weight: bold;
         font-size: 40px;
         line-height: 44px;
-        margin: 0px;
+        margin-bottom: 20px;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        color: #1A1A1A;
+        &:nth-child(1) {
+          margin-top: 80px!important;
+        }
       }
 
       .excerpt {
         font-family: 'helvetica';
         font-size: 14px; 
+        margin-bottom: 20px;
       }
     }
     
@@ -148,6 +156,10 @@ body {
       display: flex;
       align-items: center; 
       justify-content: space-around;
+
+      &:last-child {
+        margin-bottom: 80px;
+      }
 
       .content__text {
         font-family: 'helvetica'; 
@@ -175,6 +187,7 @@ body {
   padding: 10px;
   background:white;
   z-index: 100000000000;
+  cursor: pointer;
   img {
     width: 100%
   }
@@ -187,10 +200,37 @@ body {
   flex-wrap:wrap;
 
   .item-container {
-    display: inline-block;
     border-left: white solid 1px;
-    flex: 0 0 20%;
-    padding-left: 30px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 20%;
+    justify-content: space-evenly;
+    -ms-flex: 0 0 20%;
+    display: flex;
+    align-items: center;
+    flex: 0 0 18%;
+    padding: 10px 0px 10px 10px;
     margin-top: 30px;
+    margin: 25px;
+    -webkit-transition: background-color 0.4s ease-in-out;
+    transition: background-color 0.4s ease-in-out;
+    cursor: pointer;
+
+    img {
+      width: 10%;
+    }
+
+    p {
+      font-size: 12px; 
+      margin-top: 10px;
+      color: grey;
+    }
+
+    &.is-white {
+      background-color: white; 
+
+      a {
+        color: #1A1A1A;
+      }
+    }
   }
 }

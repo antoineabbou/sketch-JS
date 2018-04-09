@@ -95,6 +95,10 @@ html {
   &.is-moving {
     transform: scale(0.7);
   }
+
+  &.is-black {
+    border: 2px solid #1A1A1A;
+  }
 }
 
 .test {

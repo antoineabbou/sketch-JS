@@ -45,8 +45,6 @@ export default function() {
   let staggerConcept = document.querySelectorAll('.concept-modal .stagger')
   let staggerTable = document.querySelectorAll('.table-modal .stagger')
 
-
-
   let showConceptTl = new TimelineLite({
     delay: 0.2
   })
@@ -63,19 +61,14 @@ export default function() {
     delay: 0.2
   })
 
-
+  let closeButtons = document.querySelectorAll('.btn')
   let closeConcept = document.querySelector('.btn-close-concept')
   let closeTable = document.querySelector('.btn-close-table')
 
-
-  /*************
-   * THIS IS GOOD MAMENE CURSOR 
-   */
-
-  // http://ahrengot.com/tutorials/greensock-javascript-animation
-
-
   let cursor = document.querySelector('.cursor')
+
+  let items = document.querySelectorAll('.item-container')
+
 
   document.addEventListener('mousemove', (e) => {
     cursor.classList.add('is-moving')
@@ -89,8 +82,25 @@ export default function() {
     let timer = setTimeout(() => {
       cursor.classList.remove('is-moving')
     }, 300)
-  })
+  }) 
 
+  closeButtons.forEach(closeButton => {
+    closeButton.addEventListener('mouseover', () => {
+      cursor.classList.add('is-black')
+    })
+    closeButton.addEventListener('mouseout', () => {
+      cursor.classList.remove('is-black')
+    })
+  });
+
+  items.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      item.classList.add('is-white')
+    })
+    item.addEventListener('mouseout', () => {
+      item.classList.remove('is-white')
+    })
+  })
   //
   // process for this sketch.
   //
