@@ -286,7 +286,62 @@ export default function() {
   
   } 
 
+  const wrapWords = (str, tmpl) => {
+    return str.replace(/\w+/g, tmpl || "<span>$&</span>");
+  }
+
   const init = () => {
+    // let testing = document.querySelector('.testing')
+    // let words  = document.querySelector('.testing').innerHTML
+    // let wordsArr = words.split(' ')
+
+    // testing.innerHTML = ''
+
+    // wordsArr.forEach((word) => {
+    //   let span = document.createElement('span')
+    //   span.classList.add('text')
+    //   span.innerHTML = word + '&nbsp'
+    //   testing.append(span)
+    // })
+
+    // let spans = document.querySelectorAll('.testing span')
+    // setInterval(() => {
+    //   var blackSpan = spans[Math.floor(Math.random()*spans.length)];
+    //   blackSpan.classList.add('text--black')
+    //   setTimeout(() => {
+    //     blackSpan.classList.remove('text--black')
+    //   }, 2000)
+    // }, 2000)
+
+    let tickFast = document.querySelectorAll('.tick--fast')
+    tickFast.forEach((word) => {
+      setInterval(() => {
+        word.classList.add('ticking')
+        setTimeout(() => {
+          word.classList.remove('ticking')
+        }, 50)
+      }, 100)
+    })
+
+    let tickSlow = document.querySelectorAll('.tick--slow')
+    setInterval(() => {
+      var word = tickSlow[Math.floor(Math.random()*tickSlow.length)];
+      word.classList.add('ticking')
+      setTimeout(() => {
+        word.classList.remove('ticking')
+      }, 1000)
+    }, 1000)
+
+    tickSlow.forEach(word => {
+      word.addEventListener('mouseover', () => {
+        word.classList.add('ticking')
+      })
+      word.addEventListener('mouseout', () => {
+        word.classList.remove('ticking')
+      })
+    })
+    
+
     audioManager()
     addListeners()
 
@@ -326,6 +381,7 @@ export default function() {
         }
       })
     })
+
 
     on();
     resizeWindow();

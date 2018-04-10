@@ -2,8 +2,9 @@
   position: fixed;
   z-index: 100;
   margin: 0px;
-  top: 25px;
+  top: 40px;
   left: 20px;
+  font-family: 'Space Mono', monospace;
   &__title {
     line-height: 1;
     margin: 0 0 0.075em -0.05em;
@@ -18,11 +19,18 @@
     line-height: 1;
     margin: 10px 0 0;
   }
+  &__article {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  &__article-origin {
+    font-size: 12px;
+  }
   &__article, 
   &__article-origin {
     opacity: 0; 
     visibility: hidden;
-    transition: all .5s ease-in-out
+    transition: all .4s ease-in-out
   }
 }
 

@@ -114,10 +114,10 @@ body {
 
   .title {
     font-family: 'Space Mono', monospace;
-    font-size: 18px; 
-    line-height: 22px;
-    margin: 80px 0px 40px 30px;
-  }  
+    font-size: 24px; 
+    line-height: 30px;
+    margin: 80px 0px 80px 180px; 
+  }    
 }
 
 .concept-modal {
@@ -128,22 +128,22 @@ body {
 
   .title {
     font-family: 'Space Mono', monospace;
-    font-size: 18px; 
-    line-height: 22px;
-    margin: 80px; 
+    font-size: 24px; 
+    line-height: 30px;
+    margin: 80px 0px 80px 180px; 
   }  
 
   .concept-modal__content {
-    margin: 0px 80px;
+    margin: 0px 180px;
 
     .header {
-      max-width: 500px;
+      max-width: 600px;
 
       .subtitle {
         font-family: 'Space Mono', monospace;
         font-weight: bold;
-        font-size: 40px;
-        line-height: 44px;
+        font-size: 80px;
+        line-height: 88px;
         margin-bottom: 20px;
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
         color: #1A1A1A;
@@ -154,8 +154,9 @@ body {
 
       .excerpt {
         font-family: 'helvetica';
-        font-size: 14px; 
+        font-size: 16px; 
         margin-bottom: 20px;
+        letter-spacing: 1px;
       }
     }
     
@@ -170,7 +171,9 @@ body {
 
       .content__text {
         font-family: 'helvetica'; 
-        font-size: 11px; 
+        font-size: 14px; 
+        line-height: 18px;
+        letter-spacing: 1px;
 
         &:first-child {
           margin-right: 50px;
@@ -230,7 +233,7 @@ body {
     }
 
     img {
-      width: 10%;
+      width: 20px;
     }
 
     p {
@@ -248,3 +251,36 @@ body {
     }
   }
 }
+
+.text:before {
+  content: ' ';
+  display: inline-block;
+}
+
+.text--black {
+  color: #1A1A1A;
+  transition: color 0.4s ease-in
+}
+
+.text--tick {
+  color: #1A1A1A; 
+}
+
+.no-margin {
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+}
+
+.tick {
+  color: white;
+
+  &--slow {
+    transition: color 0.4s ease-in
+  }
+
+}
+
+.ticking {
+  color: #1A1A1A;
+}
+

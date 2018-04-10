@@ -45,7 +45,7 @@ html {
       font-family: "terminal-open"
     }
     p {
-      font-size: 12px;
+      font-size: 11px;
       font-family: 'Space Mono', monospace;
     } 
   } 
@@ -54,21 +54,23 @@ html {
   .category {
     margin: auto;
     position: absolute;
-    top: 50%; 
     transform: translateY(-50%);
     line-height: 30px;
     cursor: pointer;
     z-index: 100000;
+    font-family: "terminal-open";
     &_text {
       writing-mode: vertical-lr;
       text-transform: uppercase;
       letter-spacing: 3px;
     } 
     &--left {
+      top: 44%;
       left: 20px;
       transform: rotate(-180deg)
     }
     &--right {
+      top: 50%; 
       right: 20px;
     }
   }
