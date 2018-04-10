@@ -96,9 +96,11 @@ export default function() {
   items.forEach(item => {
     item.addEventListener('mouseover', () => {
       item.classList.add('is-white')
+      cursor.classList.add('is-black')
     })
     item.addEventListener('mouseout', () => {
       item.classList.remove('is-white')
+      cursor.classList.remove('is-black')
     })
   })
   //
