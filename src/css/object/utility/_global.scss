@@ -91,7 +91,7 @@ html {
   border: 2px solid white;
   border-radius: 100px;
   transition: transform 0.3s ease-out;
-  z-index: 100000000;
+  z-index: 99999999;
   pointer-events: none;
 
   &.is-moving {
@@ -102,105 +102,4 @@ html {
     border: 2px solid #1A1A1A;
   }
 }
-
-.article {
-  position: absolute; 
-  z-index: 9999999;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -30%);
-  max-width: 500px; 
-  max-height: 432px;
-  background: #1A1A1A; 
-  font-family: 'Space Mono', monospace;
-  display:none;
-  opacity: 0;
-
-
-  
-  .header {
-    display: flex;
-    border: 1px solid white;
-    font-size: 11px;
-    padding: 10px;
-
-    .date {
-      color:white;
-    }
-
-    .origin {
-      margin-left: 20px;
-    }
-
-    .cross {
-      margin-left: auto;
-      width:15px;
-      &:hover {
-        cursor:pointer;
-      } 
-    } 
-  } 
-
-  .grid {
-    display:flex;
-    border-left: 1px solid white;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
-
-    .left {
-      border-right: 1px solid white;
-      display:flex;
-      
-      a {
-        align-self: flex-end;
-        display: flex;
-        .arrow {
-          background: white;
-          padding: 10px;
-        }
-      }
-    } 
-
-    .right {
-      padding: 20px;
-      overflow: scroll; 
-      max-height: 350px;
-      .title {
-        font-size: 22px; 
-        font-weight: bold;
-        max-width: 70%;
-        margin: 0px 0px 20px;
-      }
-
-      .content {
-        display: flex;
-      
-
-        p:first-child {
-          max-width: 20%;
-          font-size: 11px;
-        }
-
-        p:last-child {
-          max-width: 80%;
-          margin-left: 20px;
-          font-size: 9px;
-        }
-      }
-      
-    }
-  }
-}
-
-p {
-  margin: 0px;
-}
-
-.p--italic {
-}
-
-.p--grey {
-  color: grey;
-}
-
 

@@ -32,9 +32,9 @@ export default class Boxes {
     this.articleTheme = document.querySelector('.article__theme')
     this.articleAuthor = document.querySelector('.article__author')
     this.articleDate = document.querySelector('.article__date')
-    this.articleSource = document.querySelector('.article__source')
     this.articleExcerpt = document.querySelector('.article__excerpt')
-
+    this.articleLink = document.querySelector('.article__link')
+    
 
     this.modalOpen = false
     this.modal = document.querySelector('.article')
@@ -132,7 +132,7 @@ export default class Boxes {
       Articles.forEach(article => {
         if(id === article.id) {
           this.article.innerHTML = article.title
-          this.articleTimeline.innerHTML = 'Par ' + article.author + ', le : ' + article.date + ' ';
+          this.articleTimeline.innerHTML = 'By ' + article.author + ', ' + article.date + ' ';
 
           if (isClick) {
             Emitter.emit('GLOBAL:SHOW')
@@ -140,8 +140,8 @@ export default class Boxes {
             this.articleTheme.innerHTML = article.theme
             this.articleDate.innerHTML = article.date
             this.articleAuthor.innerHTML = article.author
-            this.articleSource.innerHTML = article.source
             this.articleExcerpt.innerHTML = article.summary
+            this.articleLink.setAttribute('href', article.link)
             
         
             this.modal.style.display = 'block'
@@ -152,16 +152,6 @@ export default class Boxes {
               ease: Quint.easeInOut,
               onComplete: () => {    
                 this.modalOpen = true
-                // this.staggerTl.staggerTo(this.staggerContent, 1, {
-                //   cycle: {
-                //     y: (i) => {
-                //       return - (i + 1) * 20
-                //     }
-                //   },
-                //   alpha: 1,
-                //   ease: Expo.easeOut,
-                //   clearProps: 'opacity'
-                // }, 0.1, 'start')
               }
             })  
 
