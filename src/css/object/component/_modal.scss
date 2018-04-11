@@ -23,6 +23,7 @@
         font-size: 24px; 
         line-height: 30px;
         margin: 80px 0px 80px 180px; 
+        max-width: 320px;
     }    
 }
 
@@ -68,7 +69,6 @@
         
         .content {
             display: flex;
-            align-items: center; 
             justify-content: space-around;
 
             &:last-child {
@@ -125,6 +125,11 @@
   
       img {
         width: 20px;
+      }
+
+
+      .content {
+          max-width: 120px;
       }
   
       p {
