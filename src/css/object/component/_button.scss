@@ -1,0 +1,15 @@
+.btn-close-concept, .btn-close-table {
+    width:20px;
+    height:20px;
+    position: absolute;
+    top: 0; 
+    right: 0;
+    padding: 10px;
+    background:white;
+    z-index: 100000000000;
+    cursor: pointer;
+    
+    img {
+        width: 100%
+    }
+}

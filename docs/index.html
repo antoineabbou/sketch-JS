@@ -28,12 +28,11 @@
         <p class="p-sketch-outline__article">Article</p>
         <p class="p-sketch-outline__article-origin">Origine</p>
       </div>
-      <div class="cursor"></div>
-      <canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
       <div class="container-loader">
         <div class="loader"></div>
       </div>
-      <div class="test">
+      <div class="cursor"></div>
+      <div class="article">
         <div class="header">
           <p class="date article__date">22.04.18</p>
           <p class="origin">Par <span class="article__author">author</span>, <span class="article__source">source</span></p><img class="cross" src="../img/svg/cross.svg" alt="cross">
@@ -49,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="introduction">
+      <div class="footer">
         <h1 class="title">Machine learning</h1>
         <p>Design by Robin Blanc--Beyne & Manon Carrour | Development by Antoine Abbou and Rémi Caillot</p>
       </div>
@@ -63,6 +62,26 @@
         <div class="btn btn-close-table"><img src="../img/svg/cross-black.svg" alt="close-icon"></div>
         <h2 class="title stagger">Table of contents - Sitography</h2>
         <div class="items stagger">
+          <div class="item-container"><a class="link" href="#" target="_blank">
+              <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
+                <p>Site d'actualité </p>
+              </div><img class="arrow" src="../img/svg/right-arrow.svg"></a></div>
+          <div class="item-container"><a class="link" href="#" target="_blank">
+              <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
+                <p>Site d'actualité </p>
+              </div><img class="arrow" src="../img/svg/right-arrow.svg"></a></div>
+          <div class="item-container"><a class="link" href="#" target="_blank">
+              <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
+                <p>Site d'actualité </p>
+              </div><img class="arrow" src="../img/svg/right-arrow.svg"></a></div>
+          <div class="item-container"><a class="link" href="#" target="_blank">
+              <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
+                <p>Site d'actualité </p>
+              </div><img class="arrow" src="../img/svg/right-arrow.svg"></a></div>
+          <div class="item-container"><a class="link" href="#" target="_blank">
+              <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
+                <p>Site d'actualité </p>
+              </div><img class="arrow" src="../img/svg/right-arrow.svg"></a></div>
           <div class="item-container"><a class="link" href="#" target="_blank">
               <div class="content"><a href="#" target="_blank">www.loremipsum.fr</a>
                 <p>Site d'actualité </p>
@@ -135,12 +154,13 @@
             <h1 class="subtitle stagger">Analysis</h1>
           </div>
           <div class="content">
-            <p class="content__text stagger">Machine Learning consists of <span class="tick tick--slow"> multiple techniques </span> used so as to give computers the ability to learn. Those methods are based on data and algorithms that analyse them. Data is the key ingredient that makes machine learning possible. Indeed, there’s a lot of excitement about advances in machine learning algorithms but you can have machine learning without sophisticated algorithms, but not without good data. There is no specific field of application for Machine Learning as it can be used in virtually any discipline. We have found researches in science, art, health, education...</p>
-            <p class="content__text stagger">Machine learning techniques are countless : from neuronal-network (i.e. Algorithms that are designed to analyse data like a brain would process them), to very simple algorithms that explore very narrow sets of data. The field of Artificial Intelligence has seen a major acceleration in recent years, especially in the specialization of machine learning algorithms, controlled by large corporations with access to huge amounts of personal user data and computing power.</p>
-            <p class="content__text stagger">Machine Learning has been around us for a while now. As designer, we use softwares that contains artificial intelligence technologies. In 2015, Adobe released Photoshop CS5 with « content aware », an algorithm that « learned » to identify skin, textures, objects, water to understand the content of a picture. It can be used to automatically erase elements or texture from a picture. As designers we find it important to understand and discuss these fundamental forces that change our society. </p>
+            <p class="content__text stagger">Machine learning consists of <span class="tick tick--fast"> multiple techniques </span> used so as to give computers the ability to learn. Those methods are based on <span class="tick tick--slow"> data and algorithms </span> that analyse them. Data is the key ingredient that makes machine learning possible. Indeed, there’s a lot of excitement about advances in machine learning algorithms but you can have machine learning without sophisticated algorithms, but not without <span class="tick tick--fast"> good data. </span> There is no specific field of application for machine learning as it can be used in virtually any discipline. We have found researches in science, art, health, education...</p>
+            <p class="content__text stagger">Machine learning techniques are <span class="tick tick--fast"> countless </span> : from <span class="tick tick--slow"> neuronal-network </span> (i.e. Algorithms that are designed to analyse data like a brain would process them), to <span class="tick tick--slow"> very simple algorithms </span> that explore very narrow sets of data. The field of Artificial Intelligence has seen a major acceleration in recent years, especially in the specialization of machine learning algorithms, controlled by large corporations with access to huge amounts of <span class="tick tick--slow"> personal user data </span> and <span class="tick tick--slow"> computing power. </span></p>
+            <p class="content__text stagger">Machine learning has been around us for a while now. As designer, we use softwares that contains artificial intelligence technologies. In 2015, Adobe released Photoshop CS5 with « content aware », an algorithm that « learned » to identify skin, textures, objects, water to <span class="tick tick--slow"> understand </span> the content of a picture. It can be used to <span class="tick tick--slow"> automatically </span> erase elements or texture from a picture. As designers we find it important to understand and discuss these <span class="tick tick--fast"> fundamental forces </span> that change our society. </p>
           </div>
         </div>
       </div>
+      <canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
     </div>
     <script src="/machine-learning/js/main.min.js"></script>
   </body>

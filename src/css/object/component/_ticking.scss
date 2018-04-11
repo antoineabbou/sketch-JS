@@ -1,0 +1,12 @@
+.tick {
+    color: white;
+  
+    &--slow {
+      transition: color 0.4s ease-in
+    }
+  
+}
+
+.ticking {
+    color: #1A1A1A;
+}

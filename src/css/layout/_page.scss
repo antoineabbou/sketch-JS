@@ -19,25 +19,3 @@
   }
 }
 
-
-.articlecontainer{
-  display: flex; 
-  max-width: 60%; 
-  padding: 40px; 
-  margin: auto;
-}  
-
-.article {
-  h1 {
-    font-size: 48px;
-    margin: 18px 0px;
-  }
-  .article__origin, .article__source {
-    font-size: 14px;
-    margin: 4px 0px;
-  } 
-  .article__excerpt{
-    font-size: 16px;
-    margin-top: 48px;
-  }
-}

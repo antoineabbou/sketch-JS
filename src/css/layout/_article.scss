@@ -1,0 +1,64 @@
+.article {
+    h1 {
+      font-size: 48px;
+      margin: 18px 0px;
+    }
+    .article__origin, .article__source {
+      font-size: 14px;
+      margin: 4px 0px;
+    } 
+    .article__excerpt{
+      font-size: 16px;
+      margin-top: 48px;
+    }
+}
+
+.p-sketch-outline {
+    position: fixed;
+    z-index: 100;
+    margin: 0px;
+    top: 40px;
+    left: 20px;
+    font-family: 'Space Mono', monospace;
+    
+    &__title {
+      line-height: 1;
+      margin: 0 0 0.075em -0.05em;
+      font-weight: 100;
+      letter-spacing: 0.05em;
+    }
+    
+    &__date {
+      line-height: 1;
+      margin: 0;
+    }
+    
+    &__description {
+      line-height: 1;
+      margin: 10px 0 0;
+    }
+    
+    &__article {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    
+    &__article-origin {
+      font-size: 12px;
+    }
+    
+    &__article, 
+    &__article-origin {
+      opacity: 0; 
+      visibility: hidden;
+      transition: all .4s ease-in-out
+    }
+}
+  
+.article-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(20px);
+}
+  

@@ -1,0 +1,94 @@
+.modal, .concept-modal, .table-modal {
+    background: #1A1A1A;
+    height: 100vh; 
+    width: 100vw;
+    z-index: 2000000;
+}
+  
+.modal {
+    position: relative; 
+}
+
+.concept-modal, .table-modal {
+    position: absolute;
+    top: 0%;
+}
+
+.table-modal {
+    left: 100%; 
+    overflow: scroll;
+
+    .title {
+        font-family: 'Space Mono', monospace;
+        font-size: 24px; 
+        line-height: 30px;
+        margin: 80px 0px 80px 180px; 
+    }    
+}
+
+.concept-modal {
+    left: -100%; 
+    overflow:scroll;
+
+
+    .title {
+        font-family: 'Space Mono', monospace;
+        font-size: 24px; 
+        line-height: 30px;
+        margin: 80px 0px 80px 180px; 
+    }  
+
+    .concept-modal__content {
+        margin: 0px 180px;
+
+        .header {
+            max-width: 600px;
+
+            .subtitle {
+                font-family: 'Space Mono', monospace;
+                font-weight: bold;
+                font-size: 80px;
+                line-height: 88px;
+                margin-bottom: 20px;
+                text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                color: #1A1A1A;
+                &:nth-child(1) {
+                margin-top: 80px!important;
+                }
+            }
+
+            .excerpt {
+                font-family: 'helvetica';
+                font-size: 16px; 
+                margin-bottom: 20px;
+                letter-spacing: 2px;
+                line-height: 22px;
+            }
+        }
+        
+        .content {
+            display: flex;
+            align-items: center; 
+            justify-content: space-around;
+
+            &:last-child {
+                margin-bottom: 80px;
+            }
+
+            .content__text {
+                font-family: 'helvetica'; 
+                font-size: 14px; 
+                line-height: 19px;
+                letter-spacing: 2px;
+
+                &:first-child {
+                margin-right: 50px;
+                }
+
+                &:last-child {
+                margin-left: 50px;
+                }
+            }
+        }
+    }
+} 

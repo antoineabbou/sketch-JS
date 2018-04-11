@@ -1,0 +1,9 @@
+.text:before {
+    content: ' ';
+    display: inline-block;
+}
+
+.text--black {
+    color: #1A1A1A;
+    transition: color 0.4s ease-in
+}

@@ -244,7 +244,6 @@ export default function() {
     })
     
     tableOfContents.addEventListener('click', () => {
-      console.log('hello')
       showTableTl.to(tableModal, 1, {
         xPercent: -100,
         transformOrigin: '100%',

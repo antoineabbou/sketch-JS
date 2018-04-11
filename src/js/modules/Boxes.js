@@ -37,7 +37,7 @@ export default class Boxes {
 
 
     this.modalOpen = false
-    this.modal = document.querySelector('.test')
+    this.modal = document.querySelector('.article')
 
     this.close = document.querySelector('.cross')
     this.close.addEventListener('click', () => {
